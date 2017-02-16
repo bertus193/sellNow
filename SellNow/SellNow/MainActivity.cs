@@ -20,13 +20,19 @@ namespace SellNow
 
 			createMenu();
 
+			var itemLista = FindViewById<FrameLayout>(Resource.Id.item1);
 			var imageView = FindViewById<ImageView>(Resource.Id.image1);
 			imageView.SetImageResource(Resource.Drawable.lamparas);
 
-			imageView.Click += (sender, e) =>
+			for (int i = 0; i < 5; i++)
 			{
-				SetContentView(Resource.Layout.Producto);
-				createMenu();
+				imageView.SetImageResource(Resource.Drawable.lamparas);
+			}
+
+			itemLista.Click += (sender, e) =>
+			{
+				StartActivity(new Intent(this, typeof(verProducto)));
+				//intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
 			};
 
 		}

@@ -34,7 +34,7 @@
         <View
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/MenuButton"
+            android:id="@+id/MenuButtonProducto"
             android:layout_margin="4dp"
             android:background="@drawable/action_menu" />
         <SearchView
@@ -97,7 +97,7 @@
         <TextView
             android:text="Vendedor"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:id="@+id/textView1"
@@ -105,6 +105,30 @@
             android:shadowColor="#ff263238"
             android:layout_marginLeft="25px"
             android:textStyle="bold"
-            android:layout_marginRight="200px" />
+            android:layout_gravity="right"
+            android:layout_marginRight="25px" />
+    </GridLayout>
+    <GridLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/GridLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:orientation="horizontal"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="true">
+        <SeekBar
+            android:layout_width="520px"
+            android:layout_height="100px"
+            android:id="@+id/seekBar1"
+            android:progressTint="#ff263238"
+            android:progressBackgroundTint="#ff455a64"
+            android:secondaryProgressTint="#ff90a4ae"
+            android:layout_marginLeft="50px"
+            android:layout_marginTop="10px" />
+        <Button
+            android:text="Pujar"
+            android:id="@+id/pujar"
+            android:layout_gravity="center_vertical" />
     </GridLayout>
 </LinearLayout>

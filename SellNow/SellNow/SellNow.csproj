@@ -53,6 +53,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SellNowContainer.cs" />
+    <Compile Include="verProducto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -68,9 +69,11 @@
     <AndroidResource Include="Resources\layout\ContentLayout.axml" />
     <AndroidResource Include="Resources\layout\MenuLayout.axml" />
     <AndroidResource Include="Resources\drawable\action_menu.png" />
-    <AndroidResource Include="Resources\drawable\icon1.png" />
-    <AndroidResource Include="Resources\drawable\iconelse.png" />
     <AndroidResource Include="Resources\drawable\lamparas.png" />
+    <AndroidResource Include="Resources\drawable\cerca.png" />
+    <AndroidResource Include="Resources\drawable\inicio.png" />
+    <AndroidResource Include="Resources\drawable\categorias.png" />
+    <AndroidResource Include="Resources\drawable\perfil.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

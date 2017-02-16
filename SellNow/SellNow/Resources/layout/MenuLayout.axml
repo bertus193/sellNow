@@ -11,9 +11,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textColor="#fffff3e0"
-        android:padding="4dp" />
+        android:id="@+id/sellNowMenuHeader"
+        android:textColor="#ffeceff1"
+        android:textStyle="bold"
+        android:padding="5dp" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
@@ -28,20 +29,20 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
+        android:id="@+id/goHome"
         android:layout_margin="8dp">
         <ImageView
-            android:src="@drawable/icon1"
+            android:src="@drawable/inicio"
             android:layout_width="35.5dp"
             android:layout_height="36.0dp"
-            android:id="@+id/imageView1"
+            android:id="@+id/iconInicio"
             android:layout_marginTop="0.0dp" />
         <TextView
-            android:text="Whatever"
+            android:text="SellNow"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="81.0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2"
+            android:id="@+id/sellNowMenuName"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:textColor="#fff8f8f8"
@@ -61,21 +62,21 @@
         android:minHeight="25px"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/goPerfil"
         android:layout_margin="8dp">
         <ImageView
-            android:src="@drawable/iconelse"
+            android:src="@drawable/perfil"
             android:layout_width="36.0dp"
             android:layout_height="33.5dp"
-            android:id="@+id/imageView2"
+            android:id="@+id/iconPerfil"
             android:layout_marginRight="0.0dp"
             android:layout_marginBottom="0.0dp" />
         <TextView
-            android:text="Whichever"
+            android:text="Perfil"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView3"
+            android:id="@+id/perfilMenuName"
             android:layout_gravity="center"
             android:layout_marginLeft="8dp"
             android:textColor="#fff8f8f8"
@@ -89,4 +90,64 @@
         android:layout_gravity="center"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="14dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goCategorias"
+        android:layout_margin="8dp">
+        <ImageView
+            android:src="@drawable/categorias"
+            android:layout_width="36.0dp"
+            android:layout_height="33.5dp"
+            android:id="@+id/iconCategorias"
+            android:layout_marginRight="0.0dp"
+            android:layout_marginBottom="0.0dp" />
+        <TextView
+            android:text="Categorias"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoriasMenuName"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textColor="#fff8f8f8"
+            android:textSize="35px" />
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view3"
+        android:background="#abe4e4e4"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="14dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goCerca"
+        android:layout_margin="8dp">
+        <ImageView
+            android:src="@drawable/cerca"
+            android:layout_width="36.0dp"
+            android:layout_height="33.5dp"
+            android:id="@+id/iconCerca"
+            android:layout_marginRight="0.0dp"
+            android:layout_marginBottom="0.0dp" />
+        <TextView
+            android:text="Cerca"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cercaMenuName"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textColor="#fff8f8f8"
+            android:textSize="35px" />
+    </LinearLayout>
 </LinearLayout>
