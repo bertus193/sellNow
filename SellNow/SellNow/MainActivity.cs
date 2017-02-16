@@ -9,16 +9,30 @@ using SellNowMenu;
 
 namespace SellNow
 {
-    [Activity(Label = "SellNow", MainLauncher = true, Theme = "@android:style/Theme.Holo.Light.NoActionBar")]
+    [Activity(Label = "SellNow", MainLauncher = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class Activity1 : Activity
 	{
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
 
-			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
+			createMenu();
+
+			var imageView = FindViewById<ImageView>(Resource.Id.image1);
+			imageView.SetImageResource(Resource.Drawable.lamparas);
+
+			imageView.Click += (sender, e) =>
+			{
+				SetContentView(Resource.Layout.Producto);
+				createMenu();
+			};
+
+		}
+
+		public void createMenu()
+		{
 			var menu = FindViewById<SellNowContainer>(Resource.Id.SellNowContainer);
 			var menuButton = FindViewById(Resource.Id.MenuButton);
 			menuButton.Click += (sender, e) =>

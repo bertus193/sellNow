@@ -55,7 +55,6 @@
     <Compile Include="SellNowContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -71,6 +70,7 @@
     <AndroidResource Include="Resources\drawable\action_menu.png" />
     <AndroidResource Include="Resources\drawable\icon1.png" />
     <AndroidResource Include="Resources\drawable\iconelse.png" />
+    <AndroidResource Include="Resources\drawable\lamparas.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

@@ -37,22 +37,20 @@
             android:id="@+id/MenuButton"
             android:layout_margin="4dp"
             android:background="@drawable/action_menu" />
-        <TextView
-            android:text="SellNow"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="76.0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/textView2"
-            android:gravity="center"
-            android:textColor="#fff6f6f6"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="67.5dp" />
+        <SearchView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="336.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/searchView1" />
     </LinearLayout>
-    <TextView
-        android:text="SellNow"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/textView1"
-        android:gravity="center" />
+    <ImageView
+        android:id="@+id/image1"
+        android:src="@drawable/lamparas"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="10px"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px" />
 </LinearLayout>
