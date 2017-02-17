@@ -74,6 +74,9 @@
     <AndroidResource Include="Resources\drawable\inicio.png" />
     <AndroidResource Include="Resources\drawable\categorias.png" />
     <AndroidResource Include="Resources\drawable\perfil.png" />
+    <AndroidResource Include="Resources\layout\DatosUsuario.axml" />
+    <AndroidResource Include="Resources\drawable\imagenPerfil.png" />
+    <AndroidResource Include="Resources\drawable\border.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
