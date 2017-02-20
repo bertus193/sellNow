@@ -2,6 +2,101 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:id="@+id/SellNowContent"
+    android:background="#ffffffff">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout1"
+        android:background="#ff27277a"
+        android:minWidth="2px"
+        android:minHeight="2px"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp"
+        android:layout_marginLeft="0.0dp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view1"
+        android:background="#ff151c60" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view2"
+        android:background="#ff151c60" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout1"
+        android:background="#ff1a237e"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/MenuButtonProducto"
+            android:layout_margin="4dp"
+            android:background="@drawable/action_menu" />
+        <SearchView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="336.5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/searchView1" />
+    </LinearLayout>
+    <EditText xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:hint="Login"
+        android:textColor="#ff263238"
+        android:textStyle="bold"
+        android:layout_marginTop="150px"
+        android:text="Login"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px" />
+    <EditText xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:textColor="#ff263238"
+        android:textStyle="bold"
+        android:layout_marginTop="15px"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:text="Password" />
+    <Button
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:layout_marginRight="150px"
+        android:layout_marginLeft="150px"
+        android:layout_marginTop="100px" />
+    <Button
+        android:text="Registarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerButton"
+        android:layout_marginTop="100px"
+        android:layout_marginRight="220px"
+        android:layout_marginLeft="220px" />
+    <Button
+        android:text="Google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/googleLoginButton"
+        android:layout_marginTop="5px"
+        android:layout_marginRight="220px"
+        android:layout_marginLeft="220px" />
+    <Button
+        android:text="Facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faceebokLoginButton"
+        android:layout_marginTop="5px"
+        android:layout_marginRight="220px"
+        android:layout_marginLeft="220px" />
 </LinearLayout>

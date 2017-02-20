@@ -76,7 +76,8 @@
     <AndroidResource Include="Resources\drawable\perfil.png" />
     <AndroidResource Include="Resources\layout\DatosUsuario.axml" />
     <AndroidResource Include="Resources\drawable\imagenPerfil.png" />
-    <AndroidResource Include="Resources\drawable\border.xml" />
+    <AndroidResource Include="Resources\layout\modificarDatosUsuario.axml" />
+    <AndroidResource Include="Resources\layout\NuevaSubasta.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
