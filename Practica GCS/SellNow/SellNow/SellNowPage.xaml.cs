@@ -9,7 +9,7 @@ namespace SellNow
 		{
 			InitializeComponent();
 
-			masterPage.ListView.ItemSelected += OnItemSelected;
+			menuPage.ListView.ItemSelected += OnItemSelected;
 
 			if (Device.OS == TargetPlatform.Windows)
 			{
@@ -23,7 +23,7 @@ namespace SellNow
 			if (item != null)
 			{
 				Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-				masterPage.ListView.SelectedItem = null;
+				menuPage.ListView.SelectedItem = null;
 				IsPresented = false;
 			}
 		}

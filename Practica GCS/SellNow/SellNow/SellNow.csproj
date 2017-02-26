@@ -36,7 +36,7 @@
     <EmbeddedResource Include="CloseSellsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MasterPage.xaml">
+    <EmbeddedResource Include="MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.xaml">
@@ -61,8 +61,8 @@
     <Compile Include="CloseSellsPage.xaml.cs">
       <DependentUpon>CloseSellsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
+    <Compile Include="MenuPage.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

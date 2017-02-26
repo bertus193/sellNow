@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace SellNow
 {
-	public partial class MasterPage : ContentPage
+	public partial class MenuPage : ContentPage
 	{
 		public ListView ListView { get { return listView; } }
 
-		public MasterPage()
+		public MenuPage()
 		{
 			InitializeComponent();
 
