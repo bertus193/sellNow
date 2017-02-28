@@ -10,4 +10,13 @@ namespace SellNow
 
 		public Type TargetType { get; set; }
 	}
+
+	public class Product
+	{
+		public string Title { get; set; }
+
+		public Xamarin.Forms.ImageSource ImageSource { get; set; }
+
+		public string TargetData { get; set; }
+	}
 }

@@ -54,7 +54,7 @@
       <DependentUpon>SellNowPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SellNowPageItem.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
