@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage  Title="Inicio" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.MainPage">
 	<StackLayout VerticalOptions="FillAndExpand">
+	 <SearchBar Placeholder="Hola" Text="" HeightRequest="50">
+                </SearchBar>
 		<Image Source="http://i.imgur.com/psJSEMU.png" />
 		<Label Text="Producto 1" HorizontalOptions="Center" />
 		<Image Source="http://i.imgur.com/psJSEMU.png" />
