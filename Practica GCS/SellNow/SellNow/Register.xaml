@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  Title="Login" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.Register">
+	<StackLayout VerticalOptions="FillAndExpand">
+		
+		<Label Text="Email: " HorizontalOptions="Center"/>
+		<Entry Placeholder="Email" HorizontalOptions="Center"/>
+		
+		<Label Text="Password: " HorizontalOptions="Center" />
+		<Entry IsPassword="true" Placeholder="Password" HorizontalOptions="Center"/>
+		<Entry IsPassword="true" Placeholder="Password" HorizontalOptions="Center"/>
+
+		<Button Text="Registro"
+            HorizontalOptions="Center"/>
+
+	</StackLayout>
+	
+</ContentPage>

@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.ProfilePage">
-	<ContentPage.Content>
-		<Label Text="Profile data goes here" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-	</ContentPage.Content>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="SellNow.ProfilePage">
+	<StackLayout>
+		<SearchBar Placeholder="Hola" Text="" HeightRequest="50"></SearchBar>
+		<Image Source="http://www.finearttips.com/wp-content/uploads/2010/05/avatar.jpg" />
+		<Grid>
+		    <Grid.RowDefinitions>
+		      <RowDefinition Height="Auto" />
+		      <RowDefinition Height="*" />
+		      <RowDefinition Height="100" />
+		    </Grid.RowDefinitions>		   			
+		    <Grid.ColumnDefinitions>
+		      <ColumnDefinition Width="Auto" />
+		      <ColumnDefinition Width="*" />
+		      <ColumnDefinition Width="100" />
+		    </Grid.ColumnDefinitions>
+
+			<Label Text="Expand: "
+		           Grid.Row="1" Grid.Column="1"
+		           TextColor="White"
+		           BackgroundColor="White" 				
+					HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+		    <Label Text="Nombre: "
+		           Grid.Row="2" Grid.Column="1"
+		           TextColor="Black"
+		           BackgroundColor="White" 
+					HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+							
+
+			 <Label Text="Héctor"
+		           Grid.Row="2" Grid.Column="2"
+		           TextColor="Blue"
+		           BackgroundColor="White"
+		           HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center" />
+		     
+			<Label Text="Email: "
+		           Grid.Row="3" Grid.Column="1" Grid.RowSpan="1"
+		           TextColor="Black"
+		           BackgroundColor="White" 
+				   HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+			
+			<Label Text="h@gmail.com"
+		           Grid.Row="3" Grid.Column="2"
+		           TextColor="Blue"
+		           BackgroundColor="White"
+		           HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+
+			<Label Text="Fecha gi "
+		           Grid.Row="4" Grid.Column="0"
+		           TextColor="White"
+		           BackgroundColor="White"
+				   HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+			
+			<Label Text="Fecha gi "
+		           Grid.Row="4" Grid.Column="3"
+		           TextColor="White"
+		           BackgroundColor="White"
+				   HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+			
+			<Label Text="Fecha registro: "
+		           Grid.Row="4" Grid.Column="1"
+					TextColor="Black"
+		           BackgroundColor="White" 
+				   HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>
+			
+			<Label Text="03/03/2017"
+		           Grid.Row="4" Grid.Column="2"
+		           TextColor="Blue"
+		           BackgroundColor="White"
+				   HorizontalTextAlignment="Center"
+		           VerticalTextAlignment="Center"/>		
+		</Grid>
+
+	</StackLayout>	
 </ContentPage>
