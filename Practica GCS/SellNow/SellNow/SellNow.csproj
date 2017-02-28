@@ -45,6 +45,9 @@
     <EmbeddedResource Include="ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Producto.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -69,6 +72,9 @@
     </Compile>
     <Compile Include="ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Producto.xaml.cs">
+      <DependentUpon>Producto.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

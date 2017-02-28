@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage  Title="Inicio" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.MainPage">
 	<StackLayout VerticalOptions="FillAndExpand">
-	 <SearchBar Placeholder="Hola" Text="" HeightRequest="50">
-                </SearchBar>
-		<Image Source="http://i.imgur.com/psJSEMU.png" />
-		<Label Text="Producto 1" HorizontalOptions="Center" />
-		<Image Source="http://i.imgur.com/psJSEMU.png" />
+	 <SearchBar Placeholder="Hola" Text="" HeightRequest="50"></SearchBar>
+	 	
+		<Image Source="http://i.imgur.com/psJSEMU.png"></Image>
+    	<Button x:Name="producto1" Text="Producto 1" Clicked="OnNavigateButtonClicked" />
+
+		<Image x:Name="producto2" Source="http://i.imgur.com/psJSEMU.png" />
 		<Label Text="Producto 2" HorizontalOptions="Center" />
 
 	</StackLayout>
