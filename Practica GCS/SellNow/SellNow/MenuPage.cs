@@ -41,6 +41,13 @@ namespace SellNow
 				TargetType = typeof(LoginPage)
 			});
 
+			masterPageItems.Add(new SellNowPageItem
+			{
+				Title = "Registro",
+				IconSource = "register.png",
+				TargetType = typeof(RegisterPage)
+			});
+
 			listView.ItemsSource = masterPageItems;
 		}
 	}

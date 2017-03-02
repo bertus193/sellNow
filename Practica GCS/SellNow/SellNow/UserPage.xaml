@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage  Title="Login" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.RegisterPage">
+<ContentPage  Title="Login" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.UserPage">
 	<StackLayout VerticalOptions="FillAndExpand">
 		
 		<SearchBar Placeholder="Hola" Text="" HeightRequest="50">
                 </SearchBar>
 
-		<Image Source="https://www.xamarin.com/content/images/pages/branding/assets/xamagon.png" 
+		<Image Source="https://media.creativemornings.com/uploads/user/avatar/6930/small_avatar.jpg" 
 		HeightRequest="200"
 		/>
 		<Label Text="Email: " HorizontalOptions="Center" />
@@ -17,13 +17,9 @@
 		<Label Text="Password: " HorizontalOptions="Center" />
 		<Entry IsPassword="true" Placeholder="Password" HorizontalOptions="Center"/>
 		
-		<Button Text="Registro" HorizontalOptions="Center"
-		Clicked="OnRegisterButtonClicked"/>
+		<Button Text="Modificar datos" HorizontalOptions="Center"
+		Clicked="OnModifyButtonClicked"/>
 
-		<Button Text="Google"
-            HorizontalOptions="Center"/>
-		<Button Text="Facebook"
-            HorizontalOptions="Center"/>
 	</StackLayout>
 	
 </ContentPage>

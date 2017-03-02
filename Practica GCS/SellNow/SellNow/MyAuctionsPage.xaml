@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  Title="Inicio" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.MyAuctionsPage">
+	<StackLayout VerticalOptions="FillAndExpand">
+	 <SearchBar Placeholder="" Text="" HeightRequest="50"></SearchBar>
+	 	<Label Text="Productos de Hector" HorizontalTextAlignment="Center"/>
+		<Image Source="http://i.imgur.com/psJSEMU.png"></Image>
+    	<Button Text="Producto 1" Clicked="OnNavigateButtonClicked" />
+
+		<Image Source="http://i.imgur.com/psJSEMU.png" />
+		<Button Text="Producto 2" Clicked="OnNavigateButtonClicked" />
+
+	</StackLayout>
+	
+</ContentPage>

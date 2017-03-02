@@ -19,4 +19,13 @@ namespace SellNow
 
 		public string TargetData { get; set; }
 	}
+
+	public class Category
+	{
+		public string Title { get; set; }
+
+		public Xamarin.Forms.ImageSource ImageSource { get; set; }
+
+		public string TargetData { get; set; }
+	}
 }
