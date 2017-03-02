@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace SellNow
 {
-	public partial class CloseSellsPage : ContentPage
+	public partial class NewAuctionPage : ContentPage
 	{
-		public CloseSellsPage()
+		public NewAuctionPage()
 		{
 			InitializeComponent();
 		}

@@ -30,15 +30,15 @@ namespace SellNow
 			});
 			masterPageItems.Add(new SellNowPageItem
 			{
-				Title = "Categorías",
-				IconSource = "categories.png",
-				TargetType = typeof(CategoriesPage)
+				Title = "Nueva Subasta",
+				IconSource = "newauction.png",
+				TargetType = typeof(NewAuctionPage)
 			});
 			masterPageItems.Add(new SellNowPageItem
 			{
-				Title = "Cerca",
-				IconSource = "close.png",
-				TargetType = typeof(CloseSellsPage)
+				Title = "Login",
+				IconSource = "login.png",
+				TargetType = typeof(LoginPage)
 			});
 
 			listView.ItemsSource = masterPageItems;
