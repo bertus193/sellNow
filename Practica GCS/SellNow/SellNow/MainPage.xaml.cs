@@ -17,9 +17,7 @@ namespace SellNow
 
 		async void OnNavigateButtonClicked(object sender, EventArgs e)
 		{
-			//await Navigation.PopAsync();
 			await Navigation.PushAsync(new Producto());
-			//Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(ProfilePage)));
 		}
 	}
 }
