@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage  Title="Nueva subasta" xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SellNow.NewAuctionPage">
-	<StackLayout VerticalOptions="FillAndExpand">		
+	<StackLayout VerticalOptions="Start">		
 		<SearchBar Placeholder="Hola" Text="" HeightRequest="50">
                 </SearchBar>
         <Label Text="Nombre: " HorizontalOptions="Center" />
@@ -13,14 +13,14 @@
 		<Label Text="Precio: " HorizontalOptions="Center" />
 		<Entry Placeholder="0.0" HorizontalOptions="Center"/>
 
-		<ListView x:Name="listView" VerticalOptions="FillAndExpand">
+		<ListView HeightRequest="140" x:Name="listView" VerticalOptions="FillAndExpand">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ImageCell Text="{Binding Title}"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-		<Button Text="Nueva" HorizontalOptions="Center"/>
+		<Button Text="Crear Subasta" HorizontalOptions="Center"/>
 	</StackLayout>
 	
 </ContentPage>

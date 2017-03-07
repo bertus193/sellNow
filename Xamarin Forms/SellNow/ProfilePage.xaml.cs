@@ -15,7 +15,7 @@ namespace SellNow
 		}
 		async void OnModifyButtonClicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new MainPage());
+			await Navigation.PushAsync(new ProfilePage());
 		}
 
 		async void OnNewAuctionButtonClicked(object sender, EventArgs e)

@@ -26,6 +26,6 @@ namespace SellNow
 
 		public Xamarin.Forms.ImageSource ImageSource { get; set; }
 
-		public string TargetData { get; set; }
+		public Type TargetType { get; set; }
 	}
 }

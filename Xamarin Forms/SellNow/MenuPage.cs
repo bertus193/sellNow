@@ -34,6 +34,14 @@ namespace SellNow
 				IconSource = "newauction.png",
 				TargetType = typeof(NewAuctionPage)
 			});
+
+			masterPageItems.Add(new SellNowPageItem
+			{
+				Title = "Categorias",
+				IconSource = "categorias.png",
+				TargetType = typeof(CategoriesPage)
+			});
+
 			masterPageItems.Add(new SellNowPageItem
 			{
 				Title = "Login",

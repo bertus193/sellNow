@@ -4,9 +4,9 @@
 	 <SearchBar Placeholder="Hola" Text="" HeightRequest="50">
                 </SearchBar>
 
-		<Image Source="https://www.xamarin.com/content/images/pages/branding/assets/xamagon.png" 
+		<!--<Image Source="https://www.xamarin.com/content/images/pages/branding/assets/xamagon.png" 
 		HeightRequest="200"
-		/>
+		/>-->
 		<Label Text="Login: " HorizontalOptions="Center" />
 		<Entry Placeholder="Email" HorizontalOptions="Center"/>
 		
@@ -17,7 +17,7 @@
 		Clicked="OnLoginButtonClicked"/>
 
 		<Button Text="Registro" HorizontalOptions="Center"
-		Clicked="OnRegisterButtonClicked" />
+		Clicked="OnRegisterButtonClicked"/>
 
 		<Button Text="Google" HorizontalOptions="Center"
         Clicked="OnGoogleButtonClicked"/>

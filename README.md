@@ -1,8 +1,7 @@
-# sellNow
+#SellNow
 
-Proyecto en Xamarin para Android
+Desarrollado en:
 
-Comandos útiles:
-
-- Omnitir ficheros locales con rutas cambiadas:
-git update-index --assume-unchanged SellNow/SellNow/Resources/Resource.Designer.cs
+- Xamarin Android (Vistas - Menú)
+- Xamarin Forms (Vistas - Menú - Navegación)
+- Android Studio (Funcional)
