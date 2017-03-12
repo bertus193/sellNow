@@ -13,6 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +43,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Fragment fragment = new FragmentMain(); // create a fragement object
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.mainFrame, fragment);
+        ft.commit();
     }
 
     @Override
@@ -80,19 +88,24 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Fragment fragment =null;//declaring fragment object
         if (id == R.id.nav_home) {
-
+            fragment= new FragmentMain() ;
         } else if (id == R.id.nav_profile) {
-
+            fragment= new FragmentProfile(); //initializing fragment object
         } else if (id == R.id.nav_categories) {
-
+            fragment= new FragmentProfile() ;
         } else if (id == R.id.nav_addAuction) {
-
+            fragment= new FragmentProfile() ;
         } else if (id == R.id.nav_login) {
-
+            fragment= new FragmentProfile() ;
         } else if (id == R.id.nav_register) {
-
+            fragment= new FragmentProfile() ;
         }
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.mainFrame, fragment);
+        ft.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
