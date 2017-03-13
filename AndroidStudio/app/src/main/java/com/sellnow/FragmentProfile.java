@@ -1,5 +1,6 @@
 package com.sellnow;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -23,9 +26,8 @@ public class FragmentProfile extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    UserSessionManager session;
+    View rootView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -54,17 +56,38 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        // Session class instance
+        session = new UserSessionManager(getActivity().getApplicationContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_profile, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
+
+        TextView userEmail = (TextView) rootView.findViewById(R.id.userEmail);
+
+        if(session.isUserLoggedIn()){
+            userEmail.setText(session.getUserDetails().toString());
+        }
+
+        Button buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
+
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                session.logoutUser();
+
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.mainFrame, new FragmentLogin());
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.commit();
+            }
+        });
+
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

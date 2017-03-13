@@ -1,9 +1,6 @@
 package com.sellnow;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,26 +16,29 @@ import android.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    UserSessionManager session;
+
+    private static final int nav_profile = 1;
+    private static final int nav_addAuction = 2;
+    private static final int nav_login = 3;
+    private static final int nav_register = 4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        session = new UserSessionManager(getApplicationContext());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //Menu
+        DrawerLayout drawerMenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, drawerMenu, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerMenu.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -60,21 +60,36 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
+    /**
+     * Use if your menu is static (i.e. unchanging)
+     */
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        return true;
+    }*/
+
+    /**
+     * Gets called every time the user presses the menu button.
+     * Use if your menu is dynamic.
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        menu.add(0, nav_profile, Menu.NONE, "Mi Perfil").setIcon(R.drawable.ic_menu_profile);
+        menu.add(0, nav_addAuction, Menu.NONE, "Nueva Subasta").setIcon(R.drawable.ic_menu_addauction);
+        menu.add(0, nav_login, Menu.NONE, "Login").setIcon(R.drawable.ic_menu_login);
+        menu.add(0, nav_register, Menu.NONE, "Registro").setIcon(R.drawable.ic_menu_register);
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -82,7 +97,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -91,15 +105,20 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;//declaring fragment object
         if (id == R.id.nav_home) {
             fragment = new FragmentMain() ;
-        } else if (id == R.id.nav_profile) {
-            fragment = new FragmentProfile(); //initializing fragment object
-        } else if (id == R.id.nav_categories) {
+        }
+        else if (id == R.id.nav_categories) {
             fragment = new FragmentCategories() ;
-        } else if (id == R.id.nav_addAuction) {
+        }
+        else if (id == nav_profile) {
+            fragment = new FragmentProfile(); //initializing fragment object
+        }
+        else if (id == nav_addAuction) {
             fragment = new FragmentAddAuction() ;
-        } else if (id == R.id.nav_login) {
+        }
+        else if (id == nav_login) {
             fragment = new FragmentLogin() ;
-        } else if (id == R.id.nav_register) {
+        }
+        else if (id == nav_register) {
             fragment = new FragmentRegister() ;
         }
 
@@ -107,8 +126,8 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.mainFrame, fragment);
         ft.commit();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        DrawerLayout drawerMenu = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerMenu.closeDrawer(GravityCompat.START);
         return true;
     }
 }

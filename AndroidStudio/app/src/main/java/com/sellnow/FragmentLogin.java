@@ -1,12 +1,21 @@
 package com.sellnow;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -28,6 +37,14 @@ public class FragmentLogin extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    UserSessionManager session;
+    View rootView;
+
+    EditText txtUsername, txtPassword;
+    Button btnLogin;
+
+
 
     public FragmentLogin() {
         // Required empty public constructor
@@ -54,17 +71,59 @@ public class FragmentLogin extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        setHasOptionsMenu (true);
+
+        // Session class instance
+        session = new UserSessionManager(getActivity().getApplicationContext());
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_login, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_login, container, false);
+
+        txtUsername = (EditText) rootView.findViewById(R.id.txtUsername);
+        txtPassword = (EditText) rootView.findViewById(R.id.txtPassword);
+        btnLogin    = (Button) rootView.findViewById(R.id.btnLogin);
+
+        // Login button click event
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                String username = txtUsername.getText().toString();
+                String password = txtPassword.getText().toString();
+
+                if(username.trim().length() > 0 && password.trim().length() > 0){
+                    if(username.equals("admin") && password.equals("admin")){
+
+                        session.createUserLoginSession("Morgan Freeman",
+                                "morgan@apple.com");
+
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.mainFrame, new FragmentProfile());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.commit();
+
+                    }
+                    else{
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Username/Password is incorrect",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please enter username and password",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
