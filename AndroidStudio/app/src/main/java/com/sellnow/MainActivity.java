@@ -88,19 +88,19 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Fragment fragment =null;//declaring fragment object
+        Fragment fragment = null;//declaring fragment object
         if (id == R.id.nav_home) {
-            fragment= new FragmentMain() ;
+            fragment = new FragmentMain() ;
         } else if (id == R.id.nav_profile) {
-            fragment= new FragmentProfile(); //initializing fragment object
+            fragment = new FragmentProfile(); //initializing fragment object
         } else if (id == R.id.nav_categories) {
-            fragment= new FragmentProfile() ;
+            fragment = new FragmentCategories() ;
         } else if (id == R.id.nav_addAuction) {
-            fragment= new FragmentProfile() ;
+            fragment = new FragmentAddAuction() ;
         } else if (id == R.id.nav_login) {
-            fragment= new FragmentProfile() ;
+            fragment = new FragmentLogin() ;
         } else if (id == R.id.nav_register) {
-            fragment= new FragmentProfile() ;
+            fragment = new FragmentRegister() ;
         }
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
