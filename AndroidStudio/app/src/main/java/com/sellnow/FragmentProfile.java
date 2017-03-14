@@ -79,6 +79,8 @@ public class FragmentProfile extends Fragment {
             public void onClick(View v) {
                 session.logoutUser();
 
+                ((MainActivity)getActivity()).createNavigationMenu();
+
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.mainFrame, new FragmentLogin());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

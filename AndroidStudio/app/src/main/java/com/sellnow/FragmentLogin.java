@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,10 +105,13 @@ public class FragmentLogin extends Fragment {
                         session.createUserLoginSession("Morgan Freeman",
                                 "morgan@apple.com");
 
+                        ((MainActivity)getActivity()).createNavigationMenu();
+
                         FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.mainFrame, new FragmentProfile());
                         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                         ft.commit();
+
 
                     }
                     else{

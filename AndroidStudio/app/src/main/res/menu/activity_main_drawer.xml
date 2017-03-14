@@ -1,34 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:checkableBehavior="single"
-        android:id="@+id/menuHome">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_profile"
-            android:title="Inicio" />
-        <item
-            android:id="@+id/nav_categories"
-            android:icon="@drawable/ic_menu_categories"
-            android:title="Categorías" />
-        <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_home"
-            android:title="Mi Perfil"
-            android:visible="false"/>
-        <item
-            android:id="@+id/nav_addAuction"
-            android:icon="@drawable/ic_menu_addauction"
-            android:title="Nueva Subasta" />
-        <item
-            android:id="@+id/nav_login"
-            android:icon="@drawable/ic_menu_login"
-            android:title="Login" />
-        <item
-            android:id="@+id/nav_register"
-            android:icon="@drawable/ic_menu_register"
-            android:title="Registro" />
+    <group android:checkableBehavior="single"
+            android:id="@+id/groupNavigation">
     </group>
 
 </menu>

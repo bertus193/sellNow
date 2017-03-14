@@ -18,10 +18,12 @@ public class MainActivity extends AppCompatActivity
 
     UserSessionManager session;
 
-    private static final int nav_profile = 1;
-    private static final int nav_addAuction = 2;
-    private static final int nav_login = 3;
-    private static final int nav_register = 4;
+    private static final int nav_home       = 1;
+    private static final int nav_categories = 2;
+    private static final int nav_profile    = 3;
+    private static final int nav_addAuction = 4;
+    private static final int nav_login      = 5;
+    private static final int nav_register   = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,10 @@ public class MainActivity extends AppCompatActivity
         drawerMenu.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+        this.createNavigationMenu();
+
+
 
         Fragment fragment = new FragmentMain(); // create a fragement object
         FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -63,26 +67,32 @@ public class MainActivity extends AppCompatActivity
     /**
      * Use if your menu is static (i.e. unchanging)
      */
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
-    }*/
+    }
 
-    /**
-     * Gets called every time the user presses the menu button.
-     * Use if your menu is dynamic.
-     */
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.clear();
-        menu.add(0, nav_profile, Menu.NONE, "Mi Perfil").setIcon(R.drawable.ic_menu_profile);
-        menu.add(0, nav_addAuction, Menu.NONE, "Nueva Subasta").setIcon(R.drawable.ic_menu_addauction);
-        menu.add(0, nav_login, Menu.NONE, "Login").setIcon(R.drawable.ic_menu_login);
-        menu.add(0, nav_register, Menu.NONE, "Registro").setIcon(R.drawable.ic_menu_register);
-        return true;
+    public void createNavigationMenu() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        final Menu navigationMenu = navigationView.getMenu();
+        navigationMenu.clear();
+
+        navigationMenu.add(R.id.groupNavigation, nav_home, Menu.NONE, "Inicio").setIcon(R.drawable.ic_menu_home);
+        navigationMenu.add(R.id.groupNavigation, nav_categories, Menu.NONE, "Categorias").setIcon(R.drawable.ic_menu_categories);
+
+        if(session.isUserLoggedIn()){
+            navigationMenu.add(R.id.groupNavigation, nav_profile, Menu.NONE, "Mi Perfil").setIcon(R.drawable.ic_menu_profile);
+            navigationMenu.add(R.id.groupNavigation, nav_addAuction, Menu.NONE, "Nueva Subasta").setIcon(R.drawable.ic_menu_addauction);
+        }
+        else {
+            navigationMenu.add(R.id.groupNavigation, nav_login, Menu.NONE, "Login").setIcon(R.drawable.ic_menu_login);
+            navigationMenu.add(R.id.groupNavigation, nav_register, Menu.NONE, "Registro").setIcon(R.drawable.ic_menu_register);
+        }
     }
 
 
@@ -103,10 +113,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         Fragment fragment = null;//declaring fragment object
-        if (id == R.id.nav_home) {
+        if (id == nav_home) {
             fragment = new FragmentMain() ;
         }
-        else if (id == R.id.nav_categories) {
+        else if (id == nav_categories) {
             fragment = new FragmentCategories() ;
         }
         else if (id == nav_profile) {
