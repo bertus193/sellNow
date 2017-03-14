@@ -103,7 +103,7 @@ public class FragmentLogin extends Fragment {
                     if(username.equals("admin") && password.equals("admin")){
 
                         session.createUserLoginSession("Morgan Freeman",
-                                "morgan@apple.com");
+                                "morgan@gmail.com");
 
                         ((MainActivity)getActivity()).createNavigationMenu();
 
