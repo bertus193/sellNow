@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/auctionID"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/auctionImage"
+        android:layout_width="match_parent"
+        android:layout_height="136dp"
+        app:srcCompat="@drawable/auction" />
+
+    <TextView
+        android:id="@+id/auctionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nintendo Switch"
+        android:textSize="20dip"/>
+</LinearLayout>

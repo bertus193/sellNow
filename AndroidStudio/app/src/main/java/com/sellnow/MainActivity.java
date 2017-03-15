@@ -13,6 +13,14 @@ import android.view.MenuItem;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 
+import com.sellnow.controller.UserSessionManager;
+import com.sellnow.view.FragmentAddAuction;
+import com.sellnow.view.FragmentCategories;
+import com.sellnow.view.FragmentLogin;
+import com.sellnow.view.FragmentMain;
+import com.sellnow.view.FragmentProfile;
+import com.sellnow.view.FragmentRegister;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

@@ -1,7 +1,6 @@
-package com.sellnow;
+package com.sellnow.view;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -9,29 +8,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.sellnow.MainActivity;
+import com.sellnow.R;
+import com.sellnow.controller.UserSessionManager;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentProfile.OnFragmentInteractionListener} interface
+ * {@link FragmentLogin.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentProfile#newInstance} factory method to
+ * Use the {@link FragmentLogin#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentProfile extends Fragment {
+public class FragmentLogin extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    UserSessionManager session;
-    View rootView;
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    public FragmentProfile() {
+    UserSessionManager session;
+    View rootView;
+
+    EditText txtUsername, txtPassword;
+    Button btnLogin;
+
+
+
+    public FragmentLogin() {
         // Required empty public constructor
     }
 
@@ -41,11 +54,11 @@ public class FragmentProfile extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentProfile.
+     * @return A new instance of fragment FragmentLogin.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentProfile newInstance(String param1, String param2) {
-        FragmentProfile fragment = new FragmentProfile();
+    public static FragmentLogin newInstance(String param1, String param2) {
+        FragmentLogin fragment = new FragmentLogin();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -56,38 +69,60 @@ public class FragmentProfile extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu (true);
 
         // Session class instance
         session = new UserSessionManager(getActivity().getApplicationContext());
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_login, container, false);
 
-        TextView userEmail = (TextView) rootView.findViewById(R.id.userEmail);
+        txtUsername = (EditText) rootView.findViewById(R.id.txtUsername);
+        txtPassword = (EditText) rootView.findViewById(R.id.txtPassword);
+        btnLogin    = (Button) rootView.findViewById(R.id.btnLogin);
 
-        if(session.isUserLoggedIn()){
-            userEmail.setText(session.getUserDetails().toString());
-        }
+        // Login button click event
+        btnLogin.setOnClickListener(new View.OnClickListener() {
 
-        Button buttonLogout = (Button) rootView.findViewById(R.id.buttonLogout);
+            @Override
+            public void onClick(View arg0) {
 
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                session.logoutUser();
+                String username = txtUsername.getText().toString();
+                String password = txtPassword.getText().toString();
 
-                ((MainActivity)getActivity()).createNavigationMenu();
+                if(username.trim().length() > 0 && password.trim().length() > 0){
+                    if(username.equals("admin") && password.equals("admin")){
 
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.mainFrame, new FragmentLogin());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.commit();
+                        session.createUserLoginSession("Morgan Freeman",
+                                "morgan@gmail.com");
+
+                        ((MainActivity)getActivity()).createNavigationMenu();
+
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.mainFrame, new FragmentProfile());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.commit();
+
+
+                    }
+                    else{
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Username/Password is incorrect",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Please enter username and password",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
-
 
         return rootView;
     }
