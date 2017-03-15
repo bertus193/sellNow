@@ -16,6 +16,9 @@ import com.sellnow.MainActivity;
 import com.sellnow.controller.AuctionsAdapter;
 import com.sellnow.R;
 import com.sellnow.controller.UserSessionManager;
+import com.sellnow.model.Auction;
+
+import java.util.List;
 
 
 /**
@@ -87,10 +90,12 @@ public class FragmentProfile extends Fragment {
         auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         AuctionsAdapter adapter = new AuctionsAdapter();
         auctionRecyclerView.setAdapter(adapter);
-        adapter.addItem("Producto 1", R.drawable.auction);
-        adapter.addItem("Producto 2", R.drawable.auction);
-        adapter.addItem("Producto 3", R.drawable.auction);
-        adapter.addItem("Producto 4", R.drawable.auction);
+        List<Auction> auctions = Auction.getListAuctions();
+
+        for(int i = 0; i< auctions.size(); i++){
+            Auction auction = auctions.get(i);
+            adapter.addItem(auction.getText(), auction.getImageDraw());
+        }
 
 
 
