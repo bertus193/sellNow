@@ -30,13 +30,14 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
 
     @Override
     public void onBindViewHolder(ProductsAdapterViewHolder holder, int position) {
-        holder.auctionID.setId(position);
+        holder.auctionLayout.setTag(auctions.get(position).getName());
         holder.text.setText(auctions.get(position).getText());
         holder.image.setImageResource(auctions.get(position).getImageDraw());
     }
 
-    public void addItem(String text, Integer image){
+    public void addItem(String name, String text, Integer image){
         Auction auction = new Auction();
+        auction.setName(name);
         auction.setText(text);
         auction.setImageDraw(image);
         auctions.add(auction);
@@ -51,10 +52,10 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
 
         TextView text;
         ImageView image;
-        LinearLayout auctionID;
+        LinearLayout auctionLayout;
         public ProductsAdapterViewHolder(View itemView) {
             super(itemView);
-            auctionID = (LinearLayout) itemView.findViewById(R.id.auctionID);
+            auctionLayout = (LinearLayout) itemView.findViewById(R.id.auctionID);
             text = (TextView) itemView.findViewById(R.id.auctionText);
             image = (ImageView) itemView.findViewById(R.id.auctionImage);
 
