@@ -51,15 +51,16 @@ public class MainActivity extends AppCompatActivity
         drawerMenu.setDrawerListener(toggle);
         toggle.syncState();
 
-
         this.createNavigationMenu();
-
-
 
         Fragment fragment = new FragmentMain(); // create a fragement object
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.mainFrame, fragment);
         ft.commit();
+    }
+
+    public void clickTopButton(){
+
     }
 
     @Override
@@ -108,8 +109,18 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.button_login) {
+            Fragment fragment = null;
+            if(session.isUserLoggedIn()){
+                fragment = new FragmentLogin();
+            }
+            else{
+                fragment = new FragmentProfile();
+            }
+
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
         }
 
         return super.onOptionsItemSelected(item);

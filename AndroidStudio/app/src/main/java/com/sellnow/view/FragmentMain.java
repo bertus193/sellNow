@@ -3,11 +3,17 @@ package com.sellnow.view;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sellnow.R;
+import com.sellnow.controller.AuctionsAdapter;
+import com.sellnow.model.Auction;
+
+import java.util.List;
 
 
 /**
@@ -23,6 +29,8 @@ public class FragmentMain extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    View rootView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -57,7 +65,20 @@ public class FragmentMain extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_main, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_main, container, false);
+
+        RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
+        auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        AuctionsAdapter adapter = new AuctionsAdapter();
+        auctionRecyclerView.setAdapter(adapter);
+        List<Auction> auctions = Auction.getListAuctions();
+
+        for(int i = 0; i< auctions.size(); i++){
+            Auction auction = auctions.get(i);
+            adapter.addItem(auction.getName(), auction.getText(), auction.getImageDraw());
+        }
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
