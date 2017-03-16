@@ -1,15 +1,24 @@
 package com.sellnow.view;
 
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.sellnow.MainActivity;
 import com.sellnow.R;
+import com.sellnow.controller.UserSessionManager;
+import com.sellnow.controller.AdminSQLiteOpenHelper;
 
-
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.content.ContentValues;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -29,6 +38,12 @@ public class FragmentRegister extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    UserSessionManager session;
+    View rootView;
+
+    EditText txtEmail, txtName, txtPassword1, txtPassword2;
+    Button btnRegister;
 
     public FragmentRegister() {
         // Required empty public constructor
@@ -55,17 +70,106 @@ public class FragmentRegister extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        /*if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+        }*/
 
+        setHasOptionsMenu (true);
+
+        // Session class instance
+        session = new UserSessionManager(getActivity().getApplicationContext());
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_register, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_register, container, false);
+
+        final AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this.getActivity()
+                ,"administracion", null, 1);
+        txtEmail = (EditText) rootView.findViewById(R.id.txtEmail);
+        txtName = (EditText) rootView.findViewById(R.id.txtName);
+        txtPassword1 = (EditText) rootView.findViewById(R.id.txtPassword1);
+        txtPassword2 = (EditText) rootView.findViewById(R.id.txtPassword2);
+        btnRegister  = (Button) rootView.findViewById(R.id.btnRegister);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String email = txtEmail.getText().toString();
+                String name = txtName.getText().toString();
+                String password1 = txtPassword1.getText().toString();
+                String password2 = txtPassword2.getText().toString();
+
+                if(name.equals ("") || email.equals("")
+                        || password1.equals("") || password1.equals("")) {
+
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Algún campo vacío",
+                            Toast.LENGTH_LONG).show();
+                }
+                else if(!password1.equals(password2)){
+
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Las contraseñas no son iguales",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+                    /*SQLiteDatabase bd = admin.getWritableDatabase();
+                    String[] args = new String[] {email};
+                    Cursor c = bd.rawQuery(" SELECT email,password FROM User WHERE email=? ", args);
+                    ContentValues registro = new ContentValues();
+                    registro.put("email", email);
+                    registro.put("password", password1);
+                    bd.insert("User", null, registro);
+                    bd.close();*/
+
+
+
+                    session.createUserLoginSession(name,
+                            email);
+
+                    ((MainActivity)getActivity()).createNavigationMenu();
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.mainFrame, new FragmentProfile());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.commit();
+                }
+
+                //Cursor fila = bd.rawQuery("select email, password from user where email=" + email, null);
+
+
+                /*if (fila.moveToFirst()) {
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Usuario ya registrado",
+                            Toast.LENGTH_LONG).show();
+                }
+                else{
+                    if(email.equals("") || password1.equals("") || password1.equals("")) {
+
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Algún campo vacío",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Bien",
+                                Toast.LENGTH_LONG).show();
+                        ContentValues registro = new ContentValues();
+
+                        registro.put("email", email);
+                        registro.put("password", password1);
+                        bd.insert("user", null, registro);
+
+                        bd.close();
+                    }
+                }*/
+            }
+        });
+        return rootView;
+        //return inflater.inflate(R.layout.fragment_fragment_register, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
