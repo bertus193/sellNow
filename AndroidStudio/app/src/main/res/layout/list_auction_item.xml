@@ -11,7 +11,7 @@
         android:id="@+id/auctionImage"
         android:layout_width="match_parent"
         android:layout_height="136dp"
-        app:srcCompat="@drawable/auction" />
+        app:srcCompat="@drawable/auction1" />
 
     <TextView
         android:id="@+id/auctionText"

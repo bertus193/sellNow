@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sellnow.view.FragmentProduct">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/auctionImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/auctionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Subasta"
+            android:textSize="20dip"/>
+    </LinearLayout>
+
+</FrameLayout>

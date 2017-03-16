@@ -1,5 +1,8 @@
 package com.sellnow.controller;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.sellnow.R;
 import com.sellnow.model.Auction;
+import com.sellnow.view.FragmentLogin;
+import com.sellnow.view.FragmentProduct;
+import com.sellnow.view.FragmentProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,7 @@ import java.util.List;
 public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.ProductsAdapterViewHolder> {
 
     List<Auction> auctions;
+    Context context;
 
     public AuctionsAdapter(){
         auctions = new ArrayList<>();
@@ -24,15 +30,26 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
 
     @Override
     public ProductsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_auction_item, parent, false);
         return new ProductsAdapterViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ProductsAdapterViewHolder holder, int position) {
+        final int finalPosition = position;
         holder.auctionLayout.setTag(auctions.get(position).getName());
         holder.text.setText(auctions.get(position).getText());
         holder.image.setImageResource(auctions.get(position).getImageDraw());
+        holder.auctionLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = ((Activity) context).getFragmentManager().beginTransaction();
+                ft.replace(R.id.mainFrame, new FragmentProduct().newInstance(finalPosition));
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.commit();
+            }
+        });
     }
 
     public void addItem(String name, String text, Integer image){

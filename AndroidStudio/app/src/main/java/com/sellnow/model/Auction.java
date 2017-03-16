@@ -2,7 +2,6 @@ package com.sellnow.model;
 
 import com.sellnow.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +10,14 @@ public class Auction {
     private String name;
     private String text;
     private Integer imageDraw;
+
+    public Auction(){}
+
+    public Auction(String name, String text, Integer imageDraw){
+        this.name = name;
+        this.text = text;
+        this.imageDraw = imageDraw;
+    }
 
     public String getText() {
         return text;
@@ -45,23 +52,23 @@ public class Auction {
         Auction auction4 = new Auction();
 
         auction1.name = "prod1";
-        auction1.text = "Producto 1";
-        auction1.imageDraw = R.drawable.auction;
+        auction1.text = "Nintendo Switch";
+        auction1.imageDraw = R.drawable.auction1;
         auctions.add(auction1);
 
-        auction1.name = "prod2";
-        auction2.text = "Producto 2";
-        auction2.imageDraw = R.drawable.auction;
+        auction2.name = "prod2";
+        auction2.text = "Play Station 4";
+        auction2.imageDraw = R.drawable.auction2;
         auctions.add(auction2);
 
-        auction1.name = "prod3";
-        auction3.text = "Producto 3";
-        auction3.imageDraw = R.drawable.auction;
+        auction3.name = "prod3";
+        auction3.text = "Xbox One";
+        auction3.imageDraw = R.drawable.auction3;
         auctions.add(auction3);
 
-        auction1.name = "prod4";
-        auction4.text = "Producto 4";
-        auction4.imageDraw = R.drawable.auction;
+        auction4.name = "prod4";
+        auction4.text = "Nintendo 3DS";
+        auction4.imageDraw = R.drawable.auction4;
         auctions.add(auction4);
 
         return auctions;

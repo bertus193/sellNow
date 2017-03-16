@@ -59,10 +59,6 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
-    public void clickTopButton(){
-
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,14 +108,15 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.button_login) {
             Fragment fragment = null;
             if(session.isUserLoggedIn()){
-                fragment = new FragmentLogin();
+                fragment = new FragmentProfile();
             }
             else{
-                fragment = new FragmentProfile();
+                fragment = new FragmentLogin();
             }
 
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
             ft.commit();
         }
 
