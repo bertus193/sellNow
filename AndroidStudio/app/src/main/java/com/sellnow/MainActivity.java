@@ -1,6 +1,7 @@
 package com.sellnow;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.view.View;
 
 import com.sellnow.controller.UserSessionManager;
 import com.sellnow.model.SellNow;
@@ -62,6 +64,18 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.mainFrame, fragment);
         ft.commit();
+
+        //Icono inicio
+        FloatingActionButton iconAddAuction = (FloatingActionButton) findViewById(R.id.iconAddAuction);
+
+        iconAddAuction.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Fragment fragment = new FragmentAddAuction(); // create a fragement object
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.mainFrame, fragment);
+                ft.commit();
+            }
+        });
     }
 
     @Override
