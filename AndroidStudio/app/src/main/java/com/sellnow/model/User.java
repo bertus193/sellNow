@@ -15,6 +15,15 @@ public class User {
     private String email;
     private String name;
 
+    public User(){}
+
+    public User(String user, String pass, String email, String name) {
+        this.user = user;
+        this.pass = pass;
+        this.email = email;
+        this.name = name;
+    }
+
     public String getUser() {
         return user;
     }
@@ -45,22 +54,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<User> getListUsers(){
-        List<User> users = new ArrayList<>();
-
-        User user1 = new User();
-        User user2 = new User();
-
-        user1.setUser("admin");
-        user1.setPass("admin");
-        user1.setName("richard@gnu.com");
-        user1.setEmail("Richard Stallman");
-
-        users.add(user1);
-
-        return users;
     }
 
 

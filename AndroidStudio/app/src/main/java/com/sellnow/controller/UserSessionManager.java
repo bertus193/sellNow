@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.sellnow.model.User;
+
 public class UserSessionManager {
 
     public static SharedPreferences logInState;
@@ -42,15 +44,15 @@ public class UserSessionManager {
     }
 
     //Create login session
-    public void createUserLoginSession(String name, String email){
+    public void createUserLoginSession(User user){
         // Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
 
         // Storing name in pref
-        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_NAME, user.getName());
 
         // Storing email in pref
-        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_EMAIL, user.getEmail());
 
         // commit changes
         editor.commit();

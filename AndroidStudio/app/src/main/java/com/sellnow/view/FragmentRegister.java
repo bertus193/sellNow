@@ -15,6 +15,7 @@ import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.controller.UserSessionManager;
 import com.sellnow.controller.AdminSQLiteOpenHelper;
+import com.sellnow.model.User;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -42,7 +43,7 @@ public class FragmentRegister extends Fragment {
     UserSessionManager session;
     View rootView;
 
-    EditText txtEmail, txtName, txtPassword1, txtPassword2;
+    EditText txtEmail, txtName, txtPassword1, txtPassword2, txtUsername;
     Button btnRegister;
 
     public FragmentRegister() {
@@ -86,56 +87,64 @@ public class FragmentRegister extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_register, container, false);
 
-        final AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this.getActivity()
-                ,"administracion", null, 1);
+        //final AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this.getActivity(),"administracion", null, 1);
+
+        txtUsername = (EditText) rootView.findViewById(R.id.txtUsername);
         txtEmail = (EditText) rootView.findViewById(R.id.txtEmail);
         txtName = (EditText) rootView.findViewById(R.id.txtName);
         txtPassword1 = (EditText) rootView.findViewById(R.id.txtPassword1);
         txtPassword2 = (EditText) rootView.findViewById(R.id.txtPassword2);
+
         btnRegister  = (Button) rootView.findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                String username = txtUsername.getText().toString();
                 String email = txtEmail.getText().toString();
                 String name = txtName.getText().toString();
                 String password1 = txtPassword1.getText().toString();
                 String password2 = txtPassword2.getText().toString();
 
-                if(name.equals ("") || email.equals("")
-                        || password1.equals("") || password1.equals("")) {
+                if(username.trim().length() > 0 && email.trim().length() > 0 && name.trim().length() > 0
+                        && password1.trim().length() > 0 && password2.trim().length() > 0){
 
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "Algún campo vacío",
-                            Toast.LENGTH_LONG).show();
-                }
-                else if(!password1.equals(password2)){
+                    if(password1.equals(password2)){
+                        User user = new User(username, password1, email, name);
+                        ((MainActivity)getActivity()).sellNowContext.addUser(user);
 
-                    Toast.makeText(getActivity().getApplicationContext(),
-                            "Las contraseñas no son iguales",
-                            Toast.LENGTH_LONG).show();
+                        /*SQLiteDatabase bd = admin.getWritableDatabase();
+                        String[] args = new String[] {email};
+                        Cursor c = bd.rawQuery(" SELECT email,password FROM User WHERE email=? ", args);
+                        ContentValues registro = new ContentValues();
+                        registro.put("email", email);
+                        registro.put("password", password1);
+                        bd.insert("User", null, registro);
+                        bd.close();*/
+
+                        session.createUserLoginSession(user);
+
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Usuario registrado correctamente",
+                                Toast.LENGTH_LONG).show();
+
+                        ((MainActivity) getActivity()).createNavigationMenu();
+
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.mainFrame, new FragmentProfile());
+                        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                        ft.commit();
+                    }
+                    else{
+                        Toast.makeText(getActivity().getApplicationContext(),
+                                "Las contraseñas no coinciden",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    /*SQLiteDatabase bd = admin.getWritableDatabase();
-                    String[] args = new String[] {email};
-                    Cursor c = bd.rawQuery(" SELECT email,password FROM User WHERE email=? ", args);
-                    ContentValues registro = new ContentValues();
-                    registro.put("email", email);
-                    registro.put("password", password1);
-                    bd.insert("User", null, registro);
-                    bd.close();*/
-
-
-
-                    session.createUserLoginSession(name,
-                            email);
-
-                    ((MainActivity)getActivity()).createNavigationMenu();
-
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.mainFrame, new FragmentProfile());
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.commit();
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "Los campos no deben estar vacíos",
+                            Toast.LENGTH_LONG).show();
                 }
 
                 //Cursor fila = bd.rawQuery("select email, password from user where email=" + email, null);

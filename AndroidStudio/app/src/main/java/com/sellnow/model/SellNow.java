@@ -51,10 +51,27 @@ public class SellNow extends Application {
         this.addAuction(new Auction("Xbox One"       , R.drawable.auction3));
         this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4));
 
-        //users = new ArrayList<>();
+        users = new ArrayList<>();
+        this.addUser(new User("admin", "admin", "richard@gnu.com", "Richard Stallman"));
     }
 
     public void addAuction(Auction auction){
         auctions.add(auction);
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
+
+
+    public User getUserByNamePass(String username, String pass){
+        User out = null;
+        for(User user : users){
+            if(user.getUser().equals(username) && user.getPass().equals(pass)){
+                out = user;
+            }
+        }
+
+        return out;
     }
 }

@@ -88,7 +88,7 @@ public class FragmentAddAuction extends Fragment {
                         Toast.LENGTH_LONG).show();
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.mainFrame, new FragmentProfile());
+                ft.replace(R.id.mainFrame, new FragmentMain());
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();
             }

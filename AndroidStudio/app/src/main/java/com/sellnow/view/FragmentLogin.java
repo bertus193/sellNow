@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.controller.UserSessionManager;
+import com.sellnow.model.User;
 
 
 /**
@@ -96,10 +97,10 @@ public class FragmentLogin extends Fragment {
                 String password = txtPassword.getText().toString();
 
                 if(username.trim().length() > 0 && password.trim().length() > 0){
-                    if(username.equals("admin") && password.equals("admin")){
+                    User user = ((MainActivity)getActivity()).sellNowContext.getUserByNamePass(username, password);
+                    if(user != null){
 
-                        session.createUserLoginSession("Richard Stallman",
-                                "richard@gnu.com");
+                        session.createUserLoginSession(user);
 
                         ((MainActivity)getActivity()).createNavigationMenu();
 
@@ -112,13 +113,13 @@ public class FragmentLogin extends Fragment {
                     }
                     else{
                         Toast.makeText(getActivity().getApplicationContext(),
-                                "Username/Password is incorrect",
+                                "Pass o Usuario incorrecto",
                                 Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
                     Toast.makeText(getActivity().getApplicationContext(),
-                            "Please enter username and password",
+                            "Los campos no deben estar vacíos",
                             Toast.LENGTH_LONG).show();
                 }
             }
