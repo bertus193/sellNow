@@ -5,12 +5,14 @@ public class Auction {
     private String name;
     private String text;
     private Integer imageDraw;
+    private Category category;
 
     public Auction(){}
 
-    public Auction(String text, Integer imageDraw){
+    public Auction(String text, Integer imageDraw, Category category){
         this.text = text;
         this.imageDraw = imageDraw;
+        this.category = category;
     }
 
     public String getText() {
@@ -37,5 +39,11 @@ public class Auction {
         this.name = name;
     }
 
+    public Category getCategory() {
+        return category;
+    }
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

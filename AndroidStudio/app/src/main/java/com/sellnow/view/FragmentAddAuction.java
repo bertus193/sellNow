@@ -7,13 +7,17 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.model.Auction;
+import com.sellnow.model.Category;
 
 
 /**
@@ -24,7 +28,7 @@ import com.sellnow.model.Auction;
  * Use the {@link FragmentAddAuction#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentAddAuction extends Fragment {
+public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSelectedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,6 +41,8 @@ public class FragmentAddAuction extends Fragment {
     private View rootView;
 
     private OnFragmentInteractionListener mListener;
+
+    private String categorySelected = null;
 
     public FragmentAddAuction() {
         // Required empty public constructor
@@ -75,24 +81,46 @@ public class FragmentAddAuction extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_add_auction, container, false);
 
+
+        final Spinner categories_spinner = (Spinner) rootView.findViewById(R.id.categories_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.categories, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categories_spinner.setAdapter(adapter);
+        categories_spinner.setOnItemSelectedListener(this);
+
+
+
         final TextView text = (TextView) rootView.findViewById(R.id.txtText);
         Button upload = (Button) rootView.findViewById(R.id.btnAddAuction);
 
         upload.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-                Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview);
-                ((MainActivity)getActivity()).sellNowContext.addAuction(auction);
 
-                Toast.makeText(getActivity(), "Subasta añadida",
-                        Toast.LENGTH_LONG).show();
+                Category category = ((MainActivity)getActivity()).sellNowContext.getCategoryByName(categorySelected);
 
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.mainFrame, new FragmentMain());
-                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                ft.commit();
+                if(text.toString().trim().length() > 0 && category != null) {
+
+                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category);
+                    ((MainActivity) getActivity()).sellNowContext.addAuction(auction);
+
+                    Toast.makeText(getActivity(), "Subasta añadida",
+                            Toast.LENGTH_LONG).show();
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.mainFrame, new FragmentMain());
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.commit();
+
+                }
+                else{
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            categorySelected,
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
+
 
         return rootView;
     }
@@ -108,6 +136,16 @@ public class FragmentAddAuction extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        this.categorySelected = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     /**

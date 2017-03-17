@@ -1,0 +1,22 @@
+package com.sellnow.model;
+
+/**
+ * Created by albertoricogarcia on 17/3/17.
+ */
+
+public class Category {
+
+    private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

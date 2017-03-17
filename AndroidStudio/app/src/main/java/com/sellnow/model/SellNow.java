@@ -16,6 +16,7 @@ public class SellNow extends Application {
     private static Context mContext;
     private List<User> users;
     private List<Auction> auctions;
+    private List<Category> categories;
 
     public List<User> getUsers() {
         return users;
@@ -33,6 +34,14 @@ public class SellNow extends Application {
         this.auctions = auctions;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     public static Context getAppContext() {
         return mContext;
     }
@@ -45,11 +54,17 @@ public class SellNow extends Application {
     }
 
     public void initSellNow(){
+
+        categories = new ArrayList<>();
+        this.addCategory(new Category("Consolas"));
+        this.addCategory(new Category("Componentes"));
+        this.addCategory(new Category("Smartphones"));
+
         auctions = new ArrayList<>();
-        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1));
-        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2));
-        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3));
-        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4));
+        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0)));
+        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0)));
+        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0)));
+        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0)));
 
         users = new ArrayList<>();
         this.addUser(new User("admin", "admin", "richard@gnu.com", "Richard Stallman"));
@@ -63,6 +78,10 @@ public class SellNow extends Application {
         users.add(user);
     }
 
+    public void addCategory(Category category){
+        categories.add(category);
+    }
+
 
     public User getUserByNamePass(String username, String pass){
         User out = null;
@@ -71,7 +90,16 @@ public class SellNow extends Application {
                 out = user;
             }
         }
+        return out;
+    }
 
+    public Category getCategoryByName(String name){
+        Category out = null;
+        for(Category category : categories){
+            if(category.getName().equals(name)){
+                out = category;
+            }
+        }
         return out;
     }
 }
