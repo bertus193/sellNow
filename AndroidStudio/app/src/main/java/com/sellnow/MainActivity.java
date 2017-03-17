@@ -14,6 +14,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 
 import com.sellnow.controller.UserSessionManager;
+import com.sellnow.model.SellNow;
 import com.sellnow.view.FragmentAddAuction;
 import com.sellnow.view.FragmentCategories;
 import com.sellnow.view.FragmentLogin;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity
     private static final int nav_login      = 5;
     private static final int nav_register   = 6;
 
+    public SellNow sellNowContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Calling SellNow class (see application tag in AndroidManifest.xml)
+        this.sellNowContext = (SellNow) getApplicationContext();
 
         //Menu
         DrawerLayout drawerMenu = (DrawerLayout) findViewById(R.id.drawer_layout);

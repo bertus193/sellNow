@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.model.Auction;
+import com.sellnow.model.SellNow;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,7 +68,7 @@ public class FragmentProduct extends Fragment {
         ImageView image = (ImageView) rootview.findViewById(R.id.auctionImage);
         TextView text = (TextView) rootview.findViewById(R.id.auctionText);
 
-        Auction auction = Auction.getListAuctions().get(this.idAuction);
+        Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctions().get(this.idAuction);
 
         image.setImageResource(auction.getImageDraw());
         text.setText(auction.getText());

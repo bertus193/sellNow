@@ -4,10 +4,46 @@
     android:layout_height="match_parent"
     tools:context="com.sellnow.view.FragmentAddAuction">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Add Auction" />
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:singleLine="true"
+            android:layout_marginBottom="5dip"/>
+
+        <EditText android:id="@+id/txtText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Imagen"
+            android:layout_marginBottom="5dip"/>
+
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="155dp"
+            android:layout_height="149dp"
+            android:src="@drawable/imgpreview"
+            android:layout_gravity="center"
+            android:layout_below="@+id/imguploadtbar"
+            android:layout_centerInParent="true" />
+
+        <Button android:id="@+id/btnAddAuction"
+            android:layout_marginTop="20px"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Nueva subasta"/>
+
+    </LinearLayout>
 
 </FrameLayout>

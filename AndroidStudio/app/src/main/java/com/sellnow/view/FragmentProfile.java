@@ -92,7 +92,7 @@ public class FragmentProfile extends Fragment {
         auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         AuctionsAdapter adapter = new AuctionsAdapter();
         auctionRecyclerView.setAdapter(adapter);
-        List<Auction> auctions = Auction.getListAuctions();
+        List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctions();
 
         for(int i = 0; i< auctions.size(); i++){
             Auction auction = auctions.get(i);
