@@ -6,13 +6,15 @@ public class Auction {
     private String text;
     private Integer imageDraw;
     private Category category;
+    private double txtActualBid;
 
     public Auction(){}
 
-    public Auction(String text, Integer imageDraw, Category category){
+    public Auction(String text, Integer imageDraw, Category category, double txtActualBid){
         this.text = text;
         this.imageDraw = imageDraw;
         this.category = category;
+        this.txtActualBid = txtActualBid;
     }
 
     public String getText() {
@@ -45,5 +47,13 @@ public class Auction {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public double getActualBid() {
+        return txtActualBid;
+    }
+
+    public void setActualBid(double txtActualBid) {
+        this.txtActualBid = txtActualBid;
     }
 }

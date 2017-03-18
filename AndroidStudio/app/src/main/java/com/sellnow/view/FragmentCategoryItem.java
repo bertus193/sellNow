@@ -1,37 +1,34 @@
 package com.sellnow.view;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.sellnow.MainActivity;
 import com.sellnow.R;
-import com.sellnow.model.Auction;
-import com.sellnow.model.SellNow;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link FragmentProduct.OnFragmentInteractionListener} interface
+ * {@link FragmentCategoryItem.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link FragmentProduct#newInstance} factory method to
+ * Use the {@link FragmentCategoryItem#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentProduct extends Fragment {
+public class FragmentCategoryItem extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
 
-    private static final String ARG_PARAM1 = "name";
-    private int idAuction;
-    private View rootview;
-
+    // TODO: Rename and change types of parameters
+    private String mParam1;
 
     private OnFragmentInteractionListener mListener;
 
-    public FragmentProduct() {
+    public FragmentCategoryItem() {
         // Required empty public constructor
     }
 
@@ -40,13 +37,13 @@ public class FragmentProduct extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @return A new instance of fragment FragmentProduct.
+     * @return A new instance of fragment CategoryItem.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentProduct newInstance(int param1) {
-        FragmentProduct fragment = new FragmentProduct();
+    public static FragmentCategoryItem newInstance(String param1) {
+        FragmentCategoryItem fragment = new FragmentCategoryItem();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,7 +52,6 @@ public class FragmentProduct extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idAuction = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -63,22 +59,7 @@ public class FragmentProduct extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootview = inflater.inflate(R.layout.fragment_fragment_product, container, false);
-
-        ImageView image = (ImageView) rootview.findViewById(R.id.auctionImage);
-        TextView text = (TextView) rootview.findViewById(R.id.auctionText);
-        TextView auctionBid = (TextView) rootview.findViewById(R.id.auctionBid);
-        TextView auctionCategory = (TextView) rootview.findViewById(R.id.auctionCategory);
-
-        Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctions().get(this.idAuction);
-
-        image.setImageResource(auction.getImageDraw());
-        text.setText(auction.getText());
-        auctionBid.setText(String.valueOf(auction.getActualBid()));
-        auctionCategory.setText(auction.getCategory().getName());
-
-
-        return rootview;
+        return inflater.inflate(R.layout.fragment_fragment_category_item, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

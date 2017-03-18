@@ -92,6 +92,7 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
 
 
         final TextView text = (TextView) rootView.findViewById(R.id.txtText);
+        final TextView txtBid = (TextView) rootView.findViewById(R.id.txtBid);
         Button upload = (Button) rootView.findViewById(R.id.btnAddAuction);
 
         upload.setOnClickListener(new View.OnClickListener() {
@@ -99,9 +100,10 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
 
                 Category category = ((MainActivity)getActivity()).sellNowContext.getCategoryByName(categorySelected);
 
-                if(text.toString().trim().length() > 0 && category != null) {
+                if(text.toString().trim().length() > 0 && category != null && txtBid.toString().trim().length() > 0) {
 
-                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category);
+                    Double initialbid = Double.parseDouble(txtBid.getText().toString());
+                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category, initialbid);
                     ((MainActivity) getActivity()).sellNowContext.addAuction(auction);
 
                     Toast.makeText(getActivity(), "Subasta añadida",
@@ -115,7 +117,7 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
                 }
                 else{
                     Toast.makeText(getActivity().getApplicationContext(),
-                            categorySelected,
+                            "Los campos no deben estar vacíos",
                             Toast.LENGTH_LONG).show();
                 }
             }

@@ -19,9 +19,26 @@
 
         <TextView
             android:id="@+id/auctionText"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nombre Subasta"
+            android:textSize="20dip"/>
+
+        <TextView
+            android:id="@+id/auctionBid"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puja Actual"
+            android:textSize="20dip"/>
+
+        <TextView
+            android:id="@+id/auctionCategory"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoria"
             android:textSize="20dip"/>
     </LinearLayout>
 

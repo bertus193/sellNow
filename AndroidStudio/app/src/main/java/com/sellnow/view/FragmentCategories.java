@@ -1,13 +1,21 @@
 package com.sellnow.view;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import com.sellnow.MainActivity;
 import com.sellnow.R;
+import com.sellnow.model.Category;
+
+import java.util.List;
 
 
 /**
@@ -27,6 +35,8 @@ public class FragmentCategories extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View rootView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +75,30 @@ public class FragmentCategories extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_categories, container, false);
+        rootView = inflater.inflate(R.layout.fragment_fragment_categories, container, false);
+
+        LinearLayout listLayout = (LinearLayout) rootView.findViewById(R.id.categoriesList);
+
+        List<Category> categories= ((MainActivity)getActivity()).sellNowContext.getCategories();
+
+        for(Category category : categories){
+            Button btn = new Button(getActivity());
+            btn.setText(category.getName());
+            listLayout.addView(btn);
+
+            btn.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    ft.replace(R.id.mainFrame, new FragmentProduct().newInstance(0));
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                    ft.commit();
+                }
+            });
+        }
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

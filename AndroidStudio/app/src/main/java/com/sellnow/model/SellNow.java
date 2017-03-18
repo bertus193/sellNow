@@ -61,10 +61,10 @@ public class SellNow extends Application {
         this.addCategory(new Category("Smartphones"));
 
         auctions = new ArrayList<>();
-        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0)));
-        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0)));
-        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0)));
-        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0)));
+        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0), 290.0));
+        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0), 250.0));
+        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0), 250.0));
+        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0), 150.0));
 
         users = new ArrayList<>();
         this.addUser(new User("admin", "admin", "richard@gnu.com", "Richard Stallman"));
