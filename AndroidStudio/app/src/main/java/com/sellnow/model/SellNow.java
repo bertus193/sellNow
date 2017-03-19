@@ -102,4 +102,13 @@ public class SellNow extends Application {
         }
         return out;
     }
+
+    public List<String> getStringCategories(){
+        List<String> out = new ArrayList<>();
+        for(Category category : categories){
+            out.add(category.getName());
+        }
+        return out;
+
+    }
 }

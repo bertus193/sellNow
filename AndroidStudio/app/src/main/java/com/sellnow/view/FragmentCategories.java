@@ -2,6 +2,7 @@ package com.sellnow.view;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -81,7 +82,7 @@ public class FragmentCategories extends Fragment {
 
         List<Category> categories= ((MainActivity)getActivity()).sellNowContext.getCategories();
 
-        for(Category category : categories){
+        for(final Category category : categories){
             Button btn = new Button(getActivity());
             btn.setText(category.getName());
             listLayout.addView(btn);
@@ -90,10 +91,12 @@ public class FragmentCategories extends Fragment {
             {
                 @Override
                 public void onClick(View v) {
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.mainFrame, new FragmentProduct().newInstance(0));
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    ft.commit();
+                    Intent intent = new Intent(getActivity(), CategoriesItemActivity.class);
+                    Bundle b = new Bundle();
+                    b.putString("category", category.getName()); //Your id
+                    intent.putExtras(b); //Put your id to your next Intent
+                    getActivity().startActivity(intent);
+                    return;
                 }
             });
         }

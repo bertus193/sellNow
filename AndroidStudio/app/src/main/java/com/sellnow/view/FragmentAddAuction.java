@@ -19,6 +19,8 @@ import com.sellnow.R;
 import com.sellnow.model.Auction;
 import com.sellnow.model.Category;
 
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,10 +84,12 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
         rootView = inflater.inflate(R.layout.fragment_fragment_add_auction, container, false);
 
 
+
         final Spinner categories_spinner = (Spinner) rootView.findViewById(R.id.categories_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.categories, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        List<String> categories= ((MainActivity)getActivity()).sellNowContext.getStringCategories();
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(getActivity(),
+                android.R.layout.simple_spinner_item);
+        adapter.addAll(categories);
         categories_spinner.setAdapter(adapter);
         categories_spinner.setOnItemSelectedListener(this);
 
