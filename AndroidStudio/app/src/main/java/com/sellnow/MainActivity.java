@@ -16,13 +16,18 @@ import android.app.FragmentTransaction;
 import android.view.View;
 
 import com.sellnow.controller.UserSessionManager;
+import com.sellnow.model.Auction;
 import com.sellnow.model.SellNow;
 import com.sellnow.view.FragmentAddAuction;
 import com.sellnow.view.FragmentCategories;
 import com.sellnow.view.FragmentLogin;
 import com.sellnow.view.FragmentMain;
+import com.sellnow.view.FragmentProduct;
 import com.sellnow.view.FragmentProfile;
 import com.sellnow.view.FragmentRegister;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,6 +67,23 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment = new FragmentMain(); // create a fragement object
         FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+        int fragmentID = R.id.mainFrame;
+        //Modify Fragment from new Activity
+        Bundle vars = getIntent().getExtras();
+        if(vars != null) {
+            List<Auction> auctions = new ArrayList<>();
+            String fragmentName = vars.getString("fragmentName");
+            Fragment fragmentNewActivity = new FragmentMain();
+            switch (fragmentName) {
+                case "product":
+                    int productID = vars.getInt("productId");
+                    fragment = new FragmentProduct().newInstance(productID);
+                    break;
+            }
+
+        }
+
         ft.replace(R.id.mainFrame, fragment);
         ft.commit();
 

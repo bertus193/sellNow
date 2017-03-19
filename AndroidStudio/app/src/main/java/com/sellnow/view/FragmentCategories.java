@@ -93,10 +93,9 @@ public class FragmentCategories extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), CategoriesItemActivity.class);
                     Bundle b = new Bundle();
-                    b.putString("category", category.getName()); //Your id
-                    intent.putExtras(b); //Put your id to your next Intent
+                    b.putString("category", category.getName());
+                    intent.putExtras(b);
                     getActivity().startActivity(intent);
-                    return;
                 }
             });
         }

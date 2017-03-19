@@ -111,4 +111,14 @@ public class SellNow extends Application {
         return out;
 
     }
+
+    public List<Auction> getAuctionsByCategory(Category category){
+        List<Auction> out = new ArrayList<>();
+        for(Auction auction : auctions){
+            if(auction.getCategory().getName() == category.getName()){
+                out.add(auction);
+            }
+        }
+        return out;
+    }
 }

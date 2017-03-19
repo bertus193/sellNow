@@ -6,4 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.sellnow.view.CategoriesItemActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:id="@+id/categoriesLayout"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryActivityName"
+            android:text="Categoria"
+            android:layout_marginBottom="5dip"
+            android:textSize="30dp"
+            android:gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/productList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
 </android.support.constraint.ConstraintLayout>
