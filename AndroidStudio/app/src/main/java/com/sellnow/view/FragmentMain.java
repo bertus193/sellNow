@@ -76,10 +76,7 @@ public class FragmentMain extends Fragment {
         auctionRecyclerView.setAdapter(adapter);
         List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctions();
 
-        for(int i = 0; i< auctions.size(); i++){
-            Auction auction = auctions.get(i);
-            adapter.addItem(auction.getText(), auction.getImageDraw());
-        }
+        adapter.setAuctions(auctions);
 
         return rootView;
     }

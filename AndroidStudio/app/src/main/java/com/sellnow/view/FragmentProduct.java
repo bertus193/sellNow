@@ -73,13 +73,16 @@ public class FragmentProduct extends Fragment {
         TextView auctionCategory = (TextView) rootview.findViewById(R.id.auctionCategory);
         TextView auctionOwner = (TextView) rootview.findViewById(R.id.auctionOwner);
 
-        Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctions().get(this.idAuction);
 
-        image.setImageResource(auction.getImageDraw());
-        text.setText(auction.getText());
-        auctionBid.setText(String.valueOf(auction.getActualBid()));
-        auctionCategory.setText(auction.getCategory().getName());
-        auctionOwner.setText(auction.getOwner().getName());
+        Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctionById(this.idAuction);
+
+        if(auction != null) {
+            image.setImageResource(auction.getImageDraw());
+            text.setText(auction.getText());
+            auctionBid.setText(String.valueOf(auction.getActualBid()));
+            auctionCategory.setText(auction.getCategory().getName());
+            auctionOwner.setText(auction.getOwner().getName());
+        }
 
 
         return rootview;

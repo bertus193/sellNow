@@ -20,7 +20,7 @@ import java.util.List;
 
 public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.ProductsAdapterViewHolder> {
 
-    List<Auction> auctions;
+    private List<Auction> auctions;
     Context context;
 
     public AuctionsAdapter(){
@@ -47,7 +47,7 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 Bundle b = new Bundle();
                 b.putString("fragmentName", "product");
-                b.putInt("productID", finalPosition);
+                b.putInt("productID", auctions.get(finalPosition).getId());
                 intent.putExtras(b);
                 v.getContext().startActivity(intent);
 
@@ -59,11 +59,12 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
         });
     }
 
-    public void addItem(String text, Integer image){
-        Auction auction = new Auction();
-        auction.setText(text);
-        auction.setImageDraw(image);
-        auctions.add(auction);
+    public List<Auction> getAuctions() {
+        return auctions;
+    }
+
+    public void setAuctions(List<Auction> auctions) {
+        this.auctions = auctions;
     }
 
     @Override

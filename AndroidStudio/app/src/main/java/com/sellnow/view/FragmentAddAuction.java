@@ -109,8 +109,11 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
 
                     User user = ((MainActivity)getActivity()).sellNowContext.getUserByName("admin");
                     Double initialbid = Double.parseDouble(txtBid.getText().toString());
-                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category, initialbid, user);
+
+                    int arrayAuctionPosition = ((MainActivity)getActivity()).sellNowContext.getAuctions().size() + 1;
+                    Auction auction = new Auction(arrayAuctionPosition, text.getText().toString(), R.drawable.imgpreview, category, initialbid, user);
                     ((MainActivity) getActivity()).sellNowContext.addAuction(auction);
+
 
                     Toast.makeText(getActivity(), "Subasta añadida",
                             Toast.LENGTH_LONG).show();

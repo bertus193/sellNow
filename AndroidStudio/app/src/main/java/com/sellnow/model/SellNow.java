@@ -61,14 +61,14 @@ public class SellNow extends Application {
         this.addCategory(new Category("Smartphones"));
 
         users = new ArrayList<>();
-        this.addUser(new User("admin", "admin", "richard@gnu.com", "Richard Stallman"));
-        this.addUser(new User("root", "root", "root@internet.com", "R2D2"));
+        this.addUser(new User("admin", "admin", "richard@gnu.com",   "Richard Stallman"));
+        this.addUser(new User("root" , "root",  "root@internet.com", "R2D2"));
 
         auctions = new ArrayList<>();
-        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0), 290.0, users.get(0)));
-        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0), 250.0, users.get(0)));
-        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0), 250.0, users.get(0)));
-        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0), 150.0, users.get(0)));
+        this.addAuction(new Auction(1, "Nintendo Switch", R.drawable.auction1, categories.get(0), 290.0, users.get(0)));
+        this.addAuction(new Auction(2, "Play Station 4" , R.drawable.auction2, categories.get(0), 250.0, users.get(1)));
+        this.addAuction(new Auction(3, "Xbox One"       , R.drawable.auction3, categories.get(0), 250.0, users.get(0)));
+        this.addAuction(new Auction(4, "Nintendo 3DS"   , R.drawable.auction4, categories.get(0), 150.0, users.get(0)));
 
     }
 
@@ -153,6 +153,17 @@ public class SellNow extends Application {
                 out.add(auction);
             }
         }
+        return out;
+    }
+
+    public Auction getAuctionById(int id){
+        Auction out = null;
+        for(Auction auction : auctions){
+            if(auction.getId() == id){
+                out = auction;
+            }
+        }
+
         return out;
     }
 }

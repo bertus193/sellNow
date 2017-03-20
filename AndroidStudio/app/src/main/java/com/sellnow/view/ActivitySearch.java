@@ -63,10 +63,7 @@ public class ActivitySearch extends AppCompatActivity {
 
                 searchLayout.addView(text);
             }
-            for(int i = 0; i< auctions.size(); i++){
-                Auction auction = auctions.get(i);
-                adapter.addItem(auction.getText(), auction.getImageDraw());
-            }
+            adapter.setAuctions(auctions);
         }
         else{
             searchTextTitle.setText("No se ha buscado nada");

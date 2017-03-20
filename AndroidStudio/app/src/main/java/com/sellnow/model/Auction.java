@@ -11,7 +11,8 @@ public class Auction {
 
     public Auction(){}
 
-    public Auction(String text, Integer imageDraw, Category category, double txtActualBid, User owner){
+    public Auction(int id, String text, Integer imageDraw, Category category, double txtActualBid, User owner){
+        this.id = id;
         this.text = text;
         this.imageDraw = imageDraw;
         this.category = category;
@@ -57,5 +58,13 @@ public class Auction {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

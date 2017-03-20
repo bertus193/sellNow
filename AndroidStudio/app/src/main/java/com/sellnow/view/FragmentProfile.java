@@ -102,10 +102,7 @@ public class FragmentProfile extends Fragment {
                     AuctionsAdapter adapter = new AuctionsAdapter();
                     auctionRecyclerView.setAdapter(adapter);
 
-                    for (int i = 0; i < auctions.size(); i++) {
-                        Auction auction = auctions.get(i);
-                        adapter.addItem(auction.getText(), auction.getImageDraw());
-                    }
+                    adapter.setAuctions(auctions);
                 }
                 else{
                     TextView htext =new TextView(getActivity());

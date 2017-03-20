@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
             Fragment fragmentNewActivity = new FragmentMain();
             switch (fragmentName) {
                 case "product":
-                    int productID = vars.getInt("productId");
+                    int productID = vars.getInt("productID");
                     fragment = new FragmentProduct().newInstance(productID);
                     break;
             }
