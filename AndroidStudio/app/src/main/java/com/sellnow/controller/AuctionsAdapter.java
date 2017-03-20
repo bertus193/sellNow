@@ -1,7 +1,5 @@
 package com.sellnow.controller;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,10 +14,6 @@ import android.widget.TextView;
 import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.model.Auction;
-import com.sellnow.view.CategoriesItemActivity;
-import com.sellnow.view.FragmentLogin;
-import com.sellnow.view.FragmentProduct;
-import com.sellnow.view.FragmentProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +37,7 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
     @Override
     public void onBindViewHolder(ProductsAdapterViewHolder holder, int position) {
         final int finalPosition = position;
-        holder.auctionLayout.setTag(auctions.get(position).getName());
+        //holder.auctionLayout.setTag(auctions.get(position).getId());
         holder.text.setText(auctions.get(position).getText());
         holder.image.setImageResource(auctions.get(position).getImageDraw());
 
@@ -65,9 +59,8 @@ public class AuctionsAdapter extends RecyclerView.Adapter<AuctionsAdapter.Produc
         });
     }
 
-    public void addItem(String name, String text, Integer image){
+    public void addItem(String text, Integer image){
         Auction auction = new Auction();
-        auction.setName(name);
         auction.setText(text);
         auction.setImageDraw(image);
         auctions.add(auction);

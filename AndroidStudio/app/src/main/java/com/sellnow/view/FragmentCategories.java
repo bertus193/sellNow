@@ -1,7 +1,5 @@
 package com.sellnow.view;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -91,7 +89,7 @@ public class FragmentCategories extends Fragment {
             {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), CategoriesItemActivity.class);
+                    Intent intent = new Intent(getActivity(), ActivityCategoriesItem.class);
                     Bundle b = new Bundle();
                     b.putString("category", category.getName());
                     intent.putExtras(b);

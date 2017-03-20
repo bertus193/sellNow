@@ -2,21 +2,27 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/auctionID"
-    android:clickable="true">
+    android:clickable="true"
+    android:background="@drawable/borderitem"
+    android:padding="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_margin="8dp">
 
     <ImageView
         android:id="@+id/auctionImage"
-        android:layout_width="match_parent"
+        android:layout_width="136dp"
         android:layout_height="136dp"
         app:srcCompat="@drawable/auction1" />
 
     <TextView
         android:id="@+id/auctionText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nintendo Switch"
-        android:textSize="20dip"/>
+        android:textSize="20dip"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"/>
 </LinearLayout>

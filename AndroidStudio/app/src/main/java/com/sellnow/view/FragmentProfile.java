@@ -96,7 +96,7 @@ public class FragmentProfile extends Fragment {
 
         for(int i = 0; i< auctions.size(); i++){
             Auction auction = auctions.get(i);
-            adapter.addItem(auction.getName(), auction.getText(), auction.getImageDraw());
+            adapter.addItem( auction.getText(), auction.getImageDraw());
         }
 
 

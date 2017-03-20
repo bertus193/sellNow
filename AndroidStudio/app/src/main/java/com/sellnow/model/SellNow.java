@@ -121,4 +121,14 @@ public class SellNow extends Application {
         }
         return out;
     }
+
+    public List<Auction> getAuctionsByAuctionText(String auctionText){
+        List<Auction> out = new ArrayList<>();
+        for(Auction auction : auctions){
+            if(auction.getText().toLowerCase().contains(auctionText.toLowerCase())){
+                out.add(auction);
+            }
+        }
+        return out;
+    }
 }

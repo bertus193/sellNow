@@ -21,7 +21,7 @@ import com.sellnow.model.SellNow;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesItemActivity extends AppCompatActivity {
+public class ActivityCategoriesItem extends AppCompatActivity {
 
     public SellNow sellNowContext;
 
@@ -29,6 +29,7 @@ public class CategoriesItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories_item);
+        //Back Button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Calling SellNow class (see application tag in AndroidManifest.xml)
@@ -73,7 +74,7 @@ public class CategoriesItemActivity extends AppCompatActivity {
             }
             for(int i = 0; i< auctions.size(); i++){
                 Auction auction = auctions.get(i);
-                adapter.addItem(auction.getName(), auction.getText(), auction.getImageDraw());
+                adapter.addItem(auction.getText(), auction.getImageDraw());
             }
         }
         else{

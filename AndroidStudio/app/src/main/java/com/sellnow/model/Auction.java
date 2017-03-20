@@ -2,7 +2,7 @@ package com.sellnow.model;
 
 public class Auction {
 
-    private String name;
+    private int id;
     private String text;
     private Integer imageDraw;
     private Category category;
@@ -31,14 +31,6 @@ public class Auction {
 
     public void setImageDraw(Integer imageDraw) {
         this.imageDraw = imageDraw;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Category getCategory() {

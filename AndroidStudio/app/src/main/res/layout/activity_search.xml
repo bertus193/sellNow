@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sellnow.view.ActivityCategoriesItem">
+    tools:context="com.sellnow.view.ActivitySearch">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/categoriesLayout"
+        android:id="@+id/searchLayout"
         android:gravity="center"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp">
@@ -18,8 +18,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/categoryActivityName"
-            android:text="Categoria"
+            android:id="@+id/searchedText"
+            android:text="Búsqueda"
             android:textSize="30dp"
             android:gravity="center"
             tools:layout_editor_absoluteY="0dp"
@@ -32,7 +32,5 @@
             tools:layout_editor_absoluteY="0dp"
             tools:layout_editor_absoluteX="0dp" />
     </LinearLayout>
-
-
 
 </android.support.constraint.ConstraintLayout>
