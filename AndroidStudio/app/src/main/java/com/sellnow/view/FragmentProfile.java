@@ -76,28 +76,38 @@ public class FragmentProfile extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
 
-        TextView userName = (TextView) rootView.findViewById(R.id.userName);
-        TextView userEmail = (TextView) rootView.findViewById(R.id.userEmail);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Profiles");
+
+        TextView userNameView = (TextView) rootView.findViewById(R.id.userName);
+        TextView userEmailView = (TextView) rootView.findViewById(R.id.userEmail);
 
         if(session.isUserLoggedIn()){
-            userName.setText(session.getUserDetails().get("name"));
-            userEmail.setText(session.getUserDetails().get("email"));
+            String username = session.getUserDetails().get("username");
+            userNameView.setText(username);
+            userEmailView.setText(session.getUserDetails().get("email"));
+
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Perfil");
+
+            RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
+            //auctionRecyclerView.setNestedScrollingEnabled(false);
+
+            //auctionRecyclerView.setHasFixedSize(true);
+
+            auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            AuctionsAdapter adapter = new AuctionsAdapter();
+            auctionRecyclerView.setAdapter(adapter);
+            List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctions();
+
+            for(int i = 0; i< auctions.size(); i++){
+                Auction auction = auctions.get(i);
+                adapter.addItem( auction.getText(), auction.getImageDraw());
+            }
+        }
+        else {
+            //Is not logged
         }
 
-        RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
-        //auctionRecyclerView.setNestedScrollingEnabled(false);
 
-        //auctionRecyclerView.setHasFixedSize(true);
-
-        auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        AuctionsAdapter adapter = new AuctionsAdapter();
-        auctionRecyclerView.setAdapter(adapter);
-        List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctions();
-
-        for(int i = 0; i< auctions.size(); i++){
-            Auction auction = auctions.get(i);
-            adapter.addItem( auction.getText(), auction.getImageDraw());
-        }
 
 
 

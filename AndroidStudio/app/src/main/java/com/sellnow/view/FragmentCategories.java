@@ -76,6 +76,8 @@ public class FragmentCategories extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_categories, container, false);
 
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Categorías");
+
         LinearLayout listLayout = (LinearLayout) rootView.findViewById(R.id.categoriesList);
 
         List<Category> categories= ((MainActivity)getActivity()).sellNowContext.getCategories();

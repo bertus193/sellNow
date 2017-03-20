@@ -83,6 +83,8 @@ public class FragmentLogin extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_login, container, false);
 
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Iniciar sesión");
+
         txtUsername = (EditText) rootView.findViewById(R.id.txtUsername);
         txtPassword = (EditText) rootView.findViewById(R.id.txtPassword);
         btnLogin    = (Button) rootView.findViewById(R.id.btnLogin);

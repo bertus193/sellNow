@@ -32,6 +32,8 @@ public class ActivityCategoriesItem extends AppCompatActivity {
         //Back Button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getSupportActionBar().setTitle("Ver Categoría");
+
         // Calling SellNow class (see application tag in AndroidManifest.xml)
         this.sellNowContext = (SellNow) getApplicationContext();
 

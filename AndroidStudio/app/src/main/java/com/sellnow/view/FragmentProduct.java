@@ -65,6 +65,8 @@ public class FragmentProduct extends Fragment {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fragment_fragment_product, container, false);
 
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Ver subasta");
+
         ImageView image = (ImageView) rootview.findViewById(R.id.auctionImage);
         TextView text = (TextView) rootview.findViewById(R.id.auctionText);
         TextView auctionBid = (TextView) rootview.findViewById(R.id.auctionBid);

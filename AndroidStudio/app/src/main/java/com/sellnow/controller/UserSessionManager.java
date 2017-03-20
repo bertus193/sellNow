@@ -31,7 +31,7 @@ public class UserSessionManager {
     private static final String IS_USER_LOGIN = "loginStatus";
 
     // User name (make variable public to access from outside)
-    public static final String KEY_NAME = "name";
+    public static final String KEY_NAME = "username";
 
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
@@ -49,7 +49,7 @@ public class UserSessionManager {
         editor.putBoolean(IS_USER_LOGIN, true);
 
         // Storing name in pref
-        editor.putString(KEY_NAME, user.getName());
+        editor.putString(KEY_NAME, user.getUser());
 
         // Storing email in pref
         editor.putString(KEY_EMAIL, user.getEmail());

@@ -83,7 +83,7 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_add_auction, container, false);
 
-
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Añadir subasta");
 
         final Spinner categories_spinner = (Spinner) rootView.findViewById(R.id.categories_spinner);
         List<String> categories= ((MainActivity)getActivity()).sellNowContext.getStringCategories();

@@ -68,6 +68,8 @@ public class FragmentMain extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_main, container, false);
 
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("SellNow");
+
         RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
         auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         AuctionsAdapter adapter = new AuctionsAdapter();

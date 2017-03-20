@@ -1,7 +1,5 @@
 package com.sellnow.view;
 
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import com.sellnow.R;
 import com.sellnow.controller.AuctionsAdapter;
 import com.sellnow.model.Auction;
-import com.sellnow.model.Category;
 import com.sellnow.model.SellNow;
 
 import java.util.ArrayList;
@@ -30,6 +27,8 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         //Back Button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setTitle("Búsqueda");
 
         // Calling SellNow class (see application tag in AndroidManifest.xml)
         this.sellNowContext = (SellNow) getApplicationContext();
@@ -60,7 +59,7 @@ public class ActivitySearch extends AppCompatActivity {
                 LinearLayout searchLayout = (LinearLayout) findViewById(R.id.searchLayout);
                 TextView text =new TextView(this);
                 text.setGravity(Gravity.CENTER);
-                text.setText("No existen productos para esta categoría");
+                text.setText("No existen productos para dicha búsqueda");
 
                 searchLayout.addView(text);
             }
@@ -70,7 +69,7 @@ public class ActivitySearch extends AppCompatActivity {
             }
         }
         else{
-            searchTextTitle.setText("Ninguna categoría seleccionada");
+            searchTextTitle.setText("No se ha buscado nada");
         }
     }
 

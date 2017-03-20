@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("SellNow");
 
         // Calling SellNow class (see application tag in AndroidManifest.xml)
         this.sellNowContext = (SellNow) getApplicationContext();

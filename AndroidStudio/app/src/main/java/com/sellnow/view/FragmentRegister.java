@@ -87,6 +87,8 @@ public class FragmentRegister extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_register, container, false);
 
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Registro");
+
         //final AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this.getActivity(),"administracion", null, 1);
 
         txtUsername = (EditText) rootView.findViewById(R.id.txtUsername);
