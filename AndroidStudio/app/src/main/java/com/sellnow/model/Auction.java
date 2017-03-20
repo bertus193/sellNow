@@ -7,14 +7,16 @@ public class Auction {
     private Integer imageDraw;
     private Category category;
     private double txtActualBid;
+    private User owner;
 
     public Auction(){}
 
-    public Auction(String text, Integer imageDraw, Category category, double txtActualBid){
+    public Auction(String text, Integer imageDraw, Category category, double txtActualBid, User owner){
         this.text = text;
         this.imageDraw = imageDraw;
         this.category = category;
         this.txtActualBid = txtActualBid;
+        this.owner = owner;
     }
 
     public String getText() {
@@ -47,5 +49,13 @@ public class Auction {
 
     public void setActualBid(double txtActualBid) {
         this.txtActualBid = txtActualBid;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

@@ -18,6 +18,7 @@ import com.sellnow.MainActivity;
 import com.sellnow.R;
 import com.sellnow.model.Auction;
 import com.sellnow.model.Category;
+import com.sellnow.model.User;
 
 import java.util.List;
 
@@ -106,8 +107,9 @@ public class FragmentAddAuction extends Fragment implements AdapterView.OnItemSe
 
                 if(text.toString().trim().length() > 0 && category != null && txtBid.toString().trim().length() > 0) {
 
+                    User user = ((MainActivity)getActivity()).sellNowContext.getUserByName("admin");
                     Double initialbid = Double.parseDouble(txtBid.getText().toString());
-                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category, initialbid);
+                    Auction auction = new Auction(text.getText().toString(), R.drawable.imgpreview, category, initialbid, user);
                     ((MainActivity) getActivity()).sellNowContext.addAuction(auction);
 
                     Toast.makeText(getActivity(), "Subasta añadida",

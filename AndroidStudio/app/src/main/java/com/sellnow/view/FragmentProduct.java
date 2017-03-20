@@ -71,6 +71,7 @@ public class FragmentProduct extends Fragment {
         TextView text = (TextView) rootview.findViewById(R.id.auctionText);
         TextView auctionBid = (TextView) rootview.findViewById(R.id.auctionBid);
         TextView auctionCategory = (TextView) rootview.findViewById(R.id.auctionCategory);
+        TextView auctionOwner = (TextView) rootview.findViewById(R.id.auctionOwner);
 
         Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctions().get(this.idAuction);
 
@@ -78,6 +79,7 @@ public class FragmentProduct extends Fragment {
         text.setText(auction.getText());
         auctionBid.setText(String.valueOf(auction.getActualBid()));
         auctionCategory.setText(auction.getCategory().getName());
+        auctionOwner.setText(auction.getOwner().getName());
 
 
         return rootview;

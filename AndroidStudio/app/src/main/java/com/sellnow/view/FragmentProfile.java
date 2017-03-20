@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sellnow.MainActivity;
@@ -17,7 +19,9 @@ import com.sellnow.controller.AuctionsAdapter;
 import com.sellnow.R;
 import com.sellnow.controller.UserSessionManager;
 import com.sellnow.model.Auction;
+import com.sellnow.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -76,31 +80,45 @@ public class FragmentProfile extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
 
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Profiles");
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Perfil");
 
+        LinearLayout profileLayout = (LinearLayout) rootView.findViewById(R.id.profileInfo);
         TextView userNameView = (TextView) rootView.findViewById(R.id.userName);
         TextView userEmailView = (TextView) rootView.findViewById(R.id.userEmail);
 
         if(session.isUserLoggedIn()){
             String username = session.getUserDetails().get("username");
-            userNameView.setText(username);
             userEmailView.setText(session.getUserDetails().get("email"));
 
-            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Perfil");
+            User user = ((MainActivity)getActivity()).sellNowContext.getUserByName(username);
+            if(user != null) {
+                userNameView.setText(username);
 
-            RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
-            //auctionRecyclerView.setNestedScrollingEnabled(false);
+                List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctionsByuser(user);
 
-            //auctionRecyclerView.setHasFixedSize(true);
+                if(!auctions.isEmpty()) {
+                    RecyclerView auctionRecyclerView = (RecyclerView) rootView.findViewById(R.id.productList);
+                    auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    AuctionsAdapter adapter = new AuctionsAdapter();
+                    auctionRecyclerView.setAdapter(adapter);
 
-            auctionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            AuctionsAdapter adapter = new AuctionsAdapter();
-            auctionRecyclerView.setAdapter(adapter);
-            List<Auction> auctions = ((MainActivity)getActivity()).sellNowContext.getAuctions();
-
-            for(int i = 0; i< auctions.size(); i++){
-                Auction auction = auctions.get(i);
-                adapter.addItem( auction.getText(), auction.getImageDraw());
+                    for (int i = 0; i < auctions.size(); i++) {
+                        Auction auction = auctions.get(i);
+                        adapter.addItem(auction.getText(), auction.getImageDraw());
+                    }
+                }
+                else{
+                    TextView htext =new TextView(getActivity());
+                    htext.setText("No has creado ninguna subasta aún");
+                    htext.setGravity(Gravity.CENTER);
+                    htext.setPadding(0,20,0,0);
+                    htext.setTextSize(26);
+                    htext.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
+                    profileLayout.addView(htext);
+                }
+            }
+            else{
+                // user null
             }
         }
         else {

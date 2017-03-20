@@ -60,14 +60,16 @@ public class SellNow extends Application {
         this.addCategory(new Category("Componentes"));
         this.addCategory(new Category("Smartphones"));
 
-        auctions = new ArrayList<>();
-        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0), 290.0));
-        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0), 250.0));
-        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0), 250.0));
-        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0), 150.0));
-
         users = new ArrayList<>();
         this.addUser(new User("admin", "admin", "richard@gnu.com", "Richard Stallman"));
+        this.addUser(new User("root", "root", "root@internet.com", "R2D2"));
+
+        auctions = new ArrayList<>();
+        this.addAuction(new Auction("Nintendo Switch", R.drawable.auction1, categories.get(0), 290.0, users.get(0)));
+        this.addAuction(new Auction("Play Station 4" , R.drawable.auction2, categories.get(0), 250.0, users.get(0)));
+        this.addAuction(new Auction("Xbox One"       , R.drawable.auction3, categories.get(0), 250.0, users.get(0)));
+        this.addAuction(new Auction("Nintendo 3DS"   , R.drawable.auction4, categories.get(0), 150.0, users.get(0)));
+
     }
 
     public void addAuction(Auction auction){
@@ -126,6 +128,28 @@ public class SellNow extends Application {
         List<Auction> out = new ArrayList<>();
         for(Auction auction : auctions){
             if(auction.getText().toLowerCase().contains(auctionText.toLowerCase())){
+                out.add(auction);
+            }
+        }
+        return out;
+    }
+
+    public User getUserByName(String name){
+        User out = null;
+        for(User user : users){
+            if(user.getUser().equals(name)){
+                out = user;
+            }
+        }
+        return out;
+    }
+
+    public List<Auction> getAuctionsByuser(User user){
+        List<Auction> out = new ArrayList<>();
+        for(Auction auction : auctions){
+
+            if(auction.getOwner().getUser() == user.getUser()){
+                System.out.println(auction.getOwner().getUser() + " "+ user.getUser());
                 out.add(auction);
             }
         }
