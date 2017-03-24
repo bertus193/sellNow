@@ -1,12 +1,18 @@
 package com.sellnow.view;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.IntegerRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.sellnow.MainActivity;
@@ -28,6 +34,13 @@ public class FragmentProduct extends Fragment {
     private int idAuction;
     private View rootview;
 
+    SeekBar seekbar;
+    TextView cantidad, text;
+    Button pujar;
+    String txt1, txt2;
+    Integer aux, puja;
+    int progreso = 0;
+    double tCan, tText, total;
 
     private OnFragmentInteractionListener mListener;
 
@@ -57,6 +70,7 @@ public class FragmentProduct extends Fragment {
         if (getArguments() != null) {
             idAuction = getArguments().getInt(ARG_PARAM1);
         }
+
     }
 
     @Override
@@ -68,10 +82,63 @@ public class FragmentProduct extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Ver subasta");
 
         ImageView image = (ImageView) rootview.findViewById(R.id.auctionImage);
-        TextView text = (TextView) rootview.findViewById(R.id.auctionText);
-        TextView auctionBid = (TextView) rootview.findViewById(R.id.auctionBid);
+        text = (TextView) rootview.findViewById(R.id.auctionText);
+        final TextView auctionBid = (TextView) rootview.findViewById(R.id.auctionBid);
         TextView auctionCategory = (TextView) rootview.findViewById(R.id.auctionCategory);
         TextView auctionOwner = (TextView) rootview.findViewById(R.id.auctionOwner);
+
+
+        seekbar = (SeekBar) rootview.findViewById(R.id.seekBar);
+        seekbar.setMax(100);
+        seekbar.setProgress(progreso);
+
+        cantidad = (TextView)rootview.findViewById(R.id.newCuantity);
+        cantidad.setText("" + progreso);
+
+
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progreso = progress;
+                cantidad.setText(""+progreso);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        pujar = (Button)rootview.findViewById(R.id.buttonPujar);
+        pujar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+
+                AlertDialog alerta = new AlertDialog.Builder(getActivity()).create();
+
+                tCan = Double.valueOf(String.valueOf(cantidad.getText().toString()));
+                tText = Double.valueOf(String.valueOf(auctionBid.getText().toString()));
+                total = tText + tCan;
+                auctionBid.setText(String.valueOf((int)total));
+
+                alerta.setMessage("¡Pujar de "+cantidad.getText()+"€ realizada!");
+                alerta.setButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        progreso = 0;
+                        seekbar.setProgress(progreso);
+                    }
+                });
+                alerta.show();
+            }
+        });
+
 
 
         Auction auction = ((MainActivity)getActivity()).sellNowContext.getAuctionById(this.idAuction);

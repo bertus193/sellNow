@@ -48,6 +48,52 @@
             android:layout_marginTop="10dp"
             android:text="Propietario"
             android:textSize="20dip" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="275dp"
+                    android:layout_height="80dp" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/newCuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginBottom="20dp"
+                            android:textSize="20dp"
+                            android:textAlignment="center"
+                            android:text="0" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/buttonPujar"
+                            style="@android:style/Widget.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pujar" />
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+        </TableLayout>
     </LinearLayout>
 
 </FrameLayout>
